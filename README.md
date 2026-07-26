@@ -1,27 +1,46 @@
-# LycheeLanding
+# Lychee Landing
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
+Public marketing site for Lychee (`lycheeapp.org` / `www.lycheeapp.org`).
 
-## Development server
+Standalone Angular app (separate from `lychee-crm`). Routes:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+| Path | Page |
+|------|------|
+| `/` | Home |
+| `/privacy` | Privacy policy (AR/EN) |
+| `/terms` | Terms & conditions (AR/EN) |
 
-## Code scaffolding
+Locale: `lychee_lang` in `localStorage`, or `?lang=ar` / `?lang=en`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Development
+
+```bash
+npm install
+ng serve
+```
+
+Open http://localhost:4200/
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+ng build
+```
 
-## Running unit tests
+Output: `dist/lychee-landing/browser/` (Angular 18 application builder).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Deploy (S3 + CloudFront SPA)
 
-## Running end-to-end tests
+1. Upload the **contents** of `dist/lychee-landing/browser/` to the marketing S3 bucket.
+2. Configure the bucket (or CloudFront) as a static website / SPA:
+   - **Index document:** `index.html`
+   - **Error document:** `index.html` (required so deep links like `/privacy` and `/terms` resolve to the SPA instead of 404)
+3. Point `lycheeapp.org` and `www.lycheeapp.org` at this distribution — **not** at CRM.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+CRM remains on `crm.*` / `store.*` hosts only.
 
-## Further help
+## Out of scope
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- CRM landing-page editor (removed from `lychee-crm`)
+- Backend CMS API (content defaults live in-app; localStorage merge is for local preview only)
+- Design handoff prototypes under any sibling `lychee-landing/project` folder

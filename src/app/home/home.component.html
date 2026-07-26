@@ -1,0 +1,357 @@
+<div class="lychee-landing" *ngIf="content && !isLoading">
+  <!-- ICON SPRITE -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <g id="i-taxi"><path d="M5 11l1.4-4.2A2 2 0 0 1 8.3 5.4h7.4a2 2 0 0 1 1.9 1.4L19 11m-14 0h14m-14 0a2 2 0 0 0-2 2v3.5h2m14-5.5a2 2 0 0 1 2 2v3.5h-2m-14 0v1.5m0-1.5h14m0 0v1.5M7 16.5h.01M17 16.5h.01M9.5 5.4V4.2A1 1 0 0 1 10.5 3.2h3a1 1 0 0 1 1 1v1.2"/></g>
+      <g id="i-market"><path d="M5.5 8h13l-.9 11.2a1.5 1.5 0 0 1-1.5 1.38H7.9a1.5 1.5 0 0 1-1.5-1.38L5.5 8Z"/><path d="M8.6 8.5V6.4a3.4 3.4 0 0 1 6.8 0v2.1"/></g>
+      <g id="i-courts"><circle cx="12" cy="12" r="8.2"/><path d="M12 3.8v16.4M3.8 12h16.4M6 6a8.5 8.5 0 0 0 0 12M18 6a8.5 8.5 0 0 1 0 12"/></g>
+      <g id="i-villa"><path d="M4 11.2 12 5l8 6.2M6 10v9h12v-9M10 19v-4.2a2 2 0 0 1 4 0V19"/></g>
+      <g id="i-clinic"><rect x="4.2" y="7" width="15.6" height="12.4" rx="2.2"/><path d="M8.5 7V5.4a1.4 1.4 0 0 1 1.4-1.4h4.2a1.4 1.4 0 0 1 1.4 1.4V7M12 10.6v5M9.5 13.1h5"/></g>
+      <g id="i-voucher"><path d="M4 8.2a1.4 1.4 0 0 1 1.4-1.4h13.2A1.4 1.4 0 0 1 20 8.2v2a2 2 0 0 0 0 3.6v2a1.4 1.4 0 0 1-1.4 1.4H5.4A1.4 1.4 0 0 1 4 15.8v-2a2 2 0 0 0 0-3.6v-2Z"/><path d="M13.5 7v10" stroke-dasharray="2 2.4"/></g>
+      <g id="i-directpay"><rect x="4" y="6" width="16" height="12" rx="2"/><path d="M4 10h16M7.5 14.5h4"/></g>
+      <g id="i-sell"><path d="M4 4.2h6.3a2 2 0 0 1 1.42.59l7.5 7.5a2 2 0 0 1 0 2.83l-5.51 5.5a2 2 0 0 1-2.83 0l-7.5-7.5A2 2 0 0 1 3.4 11.3V4.8"/><circle cx="8" cy="8" r="1.5"/></g>
+      <g id="i-link"><path d="M9.5 14.5 14.5 9.5M10.8 7.5l1.2-1.2a3.5 3.5 0 0 1 5 5l-1.2 1.2M13.2 16.5l-1.2 1.2a3.5 3.5 0 0 1-5-5l1.2-1.2"/></g>
+      <g id="i-card"><rect x="4" y="6" width="16" height="12" rx="2"/><path d="M4 10h16"/></g>
+      <g id="i-check"><path d="M5 12.5 10 17.5 19 7.5"/></g>
+      <g id="i-arrow"><path d="M5 12h14M13 6l6 6-6 6"/></g>
+      <g id="i-send"><path d="M20 4 3.5 11.2a.5.5 0 0 0 .05.94l6.4 1.9 1.9 6.4a.5.5 0 0 0 .94.05L20 4Z"/><path d="M20 4l-9.95 9.05"/></g>
+      <g id="i-lock"><rect x="5.5" y="10.5" width="13" height="9" rx="2"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/></g>
+      <g id="i-globe"><circle cx="12" cy="12" r="8.2"/><path d="M3.8 12h16.4M12 3.8c2.3 2.2 3.4 5.1 3.4 8.2S14.3 18 12 20.2C9.7 18 8.6 15.1 8.6 12S9.7 6 12 3.8Z"/></g>
+      <g id="i-mail"><rect x="4" y="6" width="16" height="12" rx="2"/><path d="m5 8 7 5 7-5"/></g>
+      <g id="i-phone"><path d="M6.5 4.5h3l1.3 3.3-1.9 1.5a11 11 0 0 0 4.8 4.8l1.5-1.9 3.3 1.3v3a1.6 1.6 0 0 1-1.7 1.6C9.9 18.9 5.1 14.1 4.9 6.2A1.6 1.6 0 0 1 6.5 4.5Z"/></g>
+      <g id="i-pin"><path d="M12 21s6-5.2 6-10.5A6 6 0 0 0 6 10.5C6 15.8 12 21 12 21Z"/><circle cx="12" cy="10.4" r="2.3"/></g>
+      <g id="i-chat"><path d="M4.5 6.5A2 2 0 0 1 6.5 4.5h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H9l-4 3.5v-3.5H6.5a2 2 0 0 1-2-2Z"/></g>
+    </defs>
+  </svg>
+
+  <header class="nav">
+    <div class="wrap nav-in">
+      <a class="brand" href="#" aria-label="Lychee home">
+        <img class="logo-full" [src]="content.nav.logoFullUrl" alt="Lychee" />
+        <img class="logo-mark" [src]="content.nav.logoMarkUrl" alt="Lychee" />
+      </a>
+      <nav class="nav-links">
+        <a *ngFor="let link of content.nav.links" [href]="link.href">{{ t(link.label) }}</a>
+      </nav>
+      <div class="nav-right">
+        <button class="lang-btn" type="button" (click)="toggleLocale()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><use href="#i-globe"/></svg>
+          <span>{{ t(content.langSwitch) }}</span>
+        </button>
+        <a class="btn btn-primary btn-sm" [href]="content.nav.cta.href">
+          <span class="nav-cta-text">{{ t(content.nav.cta.label) }}</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" style="width:16px;height:16px"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap hero-in">
+      <div class="hero-copy">
+        <span class="eyebrow">{{ t(content.hero.eyebrow) }}</span>
+        <h1 class="h1">{{ t(content.hero.title) }}</h1>
+        <p class="lead">{{ t(content.hero.subtitle) }}</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" [href]="content.hero.ctaConsumer.href">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><use href="#i-arrow"/></svg>
+            <span>{{ t(content.hero.ctaConsumer.label) }}</span>
+          </a>
+          <a class="btn btn-outline" [href]="content.hero.ctaMerchant.href">
+            <span>{{ t(content.hero.ctaMerchant.label) }}</span>
+          </a>
+        </div>
+        <div class="trust">
+          <div class="trust-label">{{ t(content.hero.trustLabel) }}</div>
+          <div class="trust-row">
+            <img *ngFor="let logo of content.hero.trustLogos" class="trust-img" [src]="logo.url" [alt]="t(logo.alt)" />
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="island"></div>
+            <img class="app-shot" [src]="phoneShot()" [alt]="t(content.hero.phoneScreenshotAlt)" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad bg-off" id="consumer">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">{{ t(content.consumer.eyebrow) }}</span>
+        <h2 class="h-sec">{{ t(content.consumer.title) }}</h2>
+        <p class="sub-sec">{{ t(content.consumer.subtitle) }}</p>
+      </div>
+      <div class="feature-grid">
+        <article class="fcard">
+          <div class="fcard-body">
+            <span class="tag">{{ t(content.consumer.onepay.tag) }}</span>
+            <h3>{{ t(content.consumer.onepay.title) }}</h3>
+            <p>{{ t(content.consumer.onepay.body) }}</p>
+            <div class="onepay-vis">
+              <div class="op-ticket">
+                <div class="op-row">
+                  <div>
+                    <div class="op-label">OnePay</div>
+                    <div class="op-code">{{ content.consumer.onepay.demoCode }}</div>
+                  </div>
+                  <div class="op-amt"><span class="cur">₪</span> {{ content.consumer.onepay.demoAmount }}</div>
+                </div>
+                <div class="op-uses"><i class="used"></i><i class="used"></i><i class="used"></i><i></i><i></i></div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="fcard">
+          <div class="fcard-body">
+            <span class="tag">{{ t(content.consumer.paytag.tag) }}</span>
+            <h3>{{ t(content.consumer.paytag.title) }}</h3>
+            <p>{{ t(content.consumer.paytag.body) }}</p>
+            <span class="chip" *ngIf="content.consumer.paytag.chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><use href="#i-check"/></svg>
+              <span>{{ t(content.consumer.paytag.chip) }}</span>
+            </span>
+            <div class="paytag-vis" *ngIf="content.consumer.paytag.imageUrl">
+              <img [src]="content.consumer.paytag.imageUrl" alt="PayTag" />
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="tiles-row">
+        <div class="tile" *ngFor="let tile of content.consumer.tiles">
+          <div class="tile-ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><use [attr.href]="'#i-' + tile.icon"/></svg>
+          </div>
+          <h4>{{ t(tile.title) }}</h4>
+          <p>{{ t(tile.description) }}</p>
+        </div>
+      </div>
+      <div class="row-cta">
+        <a class="btn btn-primary" [href]="content.consumer.cta.href">
+          <span>{{ t(content.consumer.cta.label) }}</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad bg-white" id="merchant">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">{{ t(content.merchant.eyebrow) }}</span>
+        <h2 class="h-sec">{{ t(content.merchant.title) }}</h2>
+        <p class="sub-sec">{{ t(content.merchant.subtitle) }}</p>
+      </div>
+      <div class="mer-lead">
+        <article class="mcard lead-card">
+          <div class="mcard-body">
+            <span class="mtag">{{ t(content.merchant.paymentLinks.tag) }}</span>
+            <h3>{{ t(content.merchant.paymentLinks.title) }}</h3>
+            <p>{{ t(content.merchant.paymentLinks.body) }}</p>
+            <div class="plink">
+              <div class="plink-card">
+                <div class="plink-url">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><use href="#i-link"/></svg>
+                  <span>{{ content.merchant.paymentLinks.demoUrl }}</span>
+                </div>
+                <div class="plink-amt-l" *ngIf="content.merchant.paymentLinks.amountLabel">{{ t(content.merchant.paymentLinks.amountLabel) }}</div>
+                <div class="plink-amt"><span class="cur">₪</span> {{ content.merchant.paymentLinks.demoAmount }}</div>
+              </div>
+              <div class="methods" *ngIf="content.merchant.paymentLinks.methods">
+                <div class="methods-l">{{ t(content.merchant.paymentLinks.methodsLabel) }}</div>
+                <div class="method-chips">
+                  <span class="mchip" *ngFor="let m of content.merchant.paymentLinks.methods; let i = index">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><use [attr.href]="i === 0 ? '#i-voucher' : '#i-card'"/></svg>
+                    <span>{{ t(m) }}</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="mcard wa-card">
+          <div class="mcard-body">
+            <span class="mtag">{{ t(content.merchant.whatsappPay.tag) }}</span>
+            <h3>{{ t(content.merchant.whatsappPay.title) }}</h3>
+            <p>{{ t(content.merchant.whatsappPay.body) }}</p>
+            <div class="chat" *ngIf="content.merchant.whatsappPay.imageUrl">
+              <div class="wa-shot-frame">
+                <div class="island sm"></div>
+                <img class="wa-shot" [src]="content.merchant.whatsappPay.imageUrl" [alt]="t(content.merchant.whatsappPay.imageAlt)" />
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="mtiles">
+        <div class="mtile" *ngFor="let tile of content.merchant.tiles">
+          <div class="mtile-ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><use [attr.href]="'#i-' + tile.icon"/></svg>
+          </div>
+          <h4>{{ t(tile.title) }}</h4>
+          <p>{{ t(tile.description) }}</p>
+        </div>
+      </div>
+      <div class="clinic-banner">
+        <div class="cb-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><use href="#i-clinic"/></svg></div>
+        <div>
+          <h3>{{ t(content.merchant.clinic.title) }}</h3>
+          <p>{{ t(content.merchant.clinic.body) }}</p>
+        </div>
+        <a class="btn btn-ghost-light cb-cta" [href]="content.merchant.clinic.cta.href">
+          <span>{{ t(content.merchant.clinic.cta.label) }}</span>
+        </a>
+      </div>
+      <div class="mer-cta-wrap">
+        <a class="btn btn-primary" [href]="content.merchant.cta.href">
+          <span>{{ t(content.merchant.cta.label) }}</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="dev pad" id="developers">
+    <div class="wrap dev-in">
+      <div class="dev-copy">
+        <span class="eyebrow">{{ t(content.developers.eyebrow) }}</span>
+        <h2>{{ t(content.developers.title) }}</h2>
+        <p>{{ t(content.developers.body) }}</p>
+        <a class="btn btn-primary dev-cta" [href]="content.developers.cta.href">
+          <span>{{ t(content.developers.cta.label) }}</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+      <div class="code-win">
+        <div class="code-bar">
+          <i></i><i></i><i></i>
+          <span class="code-cap">{{ t(content.developers.codeCaption) }}</span>
+        </div>
+        <pre class="code">{{ content.developers.codeSample }}</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad bg-white" id="contact">
+    <div class="wrap contact-in">
+      <div class="contact-copy">
+        <div class="sec-head" style="margin-bottom:0">
+          <span class="eyebrow">{{ t(content.contact.eyebrow) }}</span>
+          <h2 class="h-sec">{{ t(content.contact.title) }}</h2>
+          <p class="sub-sec">{{ t(content.contact.subtitle) }}</p>
+        </div>
+        <div class="ch-list">
+          <ng-container *ngFor="let ch of content.contact.channels">
+            <a *ngIf="ch.href" class="ch-item" [href]="ch.href" [attr.target]="ch.type === 'whatsapp' ? '_blank' : null">
+              <span class="ch-ic">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><use [attr.href]="'#i-' + channelIcon(ch.type)"/></svg>
+              </span>
+              <span class="ch-tx">
+                <span class="ch-t">{{ t(ch.label) }}</span>
+                <span class="ch-v" [class.ltr]="ch.type === 'email' || ch.type === 'phone'">{{ t(ch.value) }}</span>
+              </span>
+            </a>
+            <div *ngIf="!ch.href" class="ch-item" style="cursor:default">
+              <span class="ch-ic">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><use [attr.href]="'#i-' + channelIcon(ch.type)"/></svg>
+              </span>
+              <span class="ch-tx">
+                <span class="ch-t">{{ t(ch.label) }}</span>
+                <span class="ch-v">{{ t(ch.value) }}</span>
+              </span>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <form class="contact-form" (submit)="onContactSubmit($event)">
+        <div class="field-row">
+          <div class="field">
+            <label for="cf-name">{{ t(content.contact.form.nameLabel) }}</label>
+            <input id="cf-name" type="text" autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="cf-email">{{ t(content.contact.form.emailLabel) }}</label>
+            <input id="cf-email" type="email" autocomplete="email" dir="ltr" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="cf-topic">{{ t(content.contact.form.topicLabel) }}</label>
+          <input id="cf-topic" type="text" />
+        </div>
+        <div class="field">
+          <label for="cf-msg">{{ t(content.contact.form.messageLabel) }}</label>
+          <textarea id="cf-msg"></textarea>
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">
+          <span>{{ t(content.contact.form.sendLabel) }}</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><use href="#i-send"/></svg>
+        </button>
+        <div class="form-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><use href="#i-lock"/></svg>
+          <span>{{ t(content.contact.form.privacyNote) }}</span>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="pad bg-off closer" id="closer">
+    <div class="wrap">
+      <h2 class="h-sec">{{ t(content.closer.title) }}</h2>
+      <p class="sub-sec">{{ t(content.closer.body) }}</p>
+      <div class="eco-row">
+        <span class="eco" *ngFor="let icon of content.closer.ecoIcons">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><use [attr.href]="'#i-' + icon"/></svg>
+        </span>
+      </div>
+      <div class="store-badges">
+        <a class="store-badge" [href]="content.closer.appStore.href" aria-label="App Store">
+          <svg viewBox="0 0 24 24"><path d="M16.4 12.9c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.8-3.5.8-.7 0-1.9-.8-3.1-.8-1.6 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2-.05 1.6-.75 3-.75s1.8.75 3 .73c1.2-.02 2-1.1 2.8-2.2.9-1.3 1.2-2.5 1.3-2.6-.03-.01-2.4-.9-2.4-3.6ZM14.2 6.3c.65-.8 1.1-1.9.98-3-1 .04-2.1.66-2.8 1.45-.6.7-1.14 1.8-1 2.9 1.1.08 2.2-.55 2.82-1.35Z"/></svg>
+          <span class="sb-t"><small>{{ t(content.closer.appStore.top) }}</small><b>{{ t(content.closer.appStore.bottom) }}</b></span>
+        </a>
+        <a class="store-badge" [href]="content.closer.playStore.href" aria-label="Google Play">
+          <svg viewBox="0 0 24 24"><path d="M4.2 3.3c-.3.28-.45.7-.45 1.25v14.9c0 .55.16.97.47 1.24l.08.07 8.35-8.35v-.2L4.28 3.24l-.08.06Zm11.1 8.4L12.5 8.9l.02-.02 3.05 3.05-.27-.23Zm0 .6.27-.23L20 15.06c.85.48.85 1.28 0 1.77l-4.32 2.45-.36-.36 2.78-2.78-2.78-2.5.36-.34Zm-2.8-.3-8.06 8.06 8.06-4.58v-3.48Zm0-1.2V6.85L4.44 2.3l8.06 8.5Z"/></svg>
+          <span class="sb-t"><small>{{ t(content.closer.playStore.top) }}</small><b>{{ t(content.closer.playStore.bottom) }}</b></span>
+        </a>
+      </div>
+      <div class="closer-ctas">
+        <a class="btn btn-primary" [href]="content.closer.ctaConsumer.href">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><use href="#i-arrow"/></svg>
+          <span>{{ t(content.closer.ctaConsumer.label) }}</span>
+        </a>
+        <a class="btn btn-outline" [href]="content.closer.ctaMerchant.href">
+          <span>{{ t(content.closer.ctaMerchant.label) }}</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="foot-top">
+        <div class="foot-brand">
+          <img [src]="content.footer.logoLightUrl" alt="Lychee" />
+          <p>{{ t(content.footer.tagline) }}</p>
+        </div>
+        <div class="foot-col" *ngFor="let col of content.footer.columns">
+          <h5>{{ t(col.title) }}</h5>
+          <ng-container *ngFor="let link of col.links">
+            <a *ngIf="isAppRoute(link.href)" [routerLink]="link.href">{{ t(link.label) }}</a>
+            <a *ngIf="!isAppRoute(link.href)" [href]="link.href">{{ t(link.label) }}</a>
+          </ng-container>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span class="cr">{{ t(content.footer.copyright) }}</span>
+        <button class="foot-lang" type="button" (click)="toggleLocale()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><use href="#i-globe"/></svg>
+          <span>{{ t(content.langSwitch) }}</span>
+        </button>
+        <span class="made">{{ t(content.footer.madeIn) }}</span>
+      </div>
+    </div>
+  </footer>
+</div>

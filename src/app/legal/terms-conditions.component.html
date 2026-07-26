@@ -1,0 +1,244 @@
+<div class="legal-page">
+  <header class="legal-nav">
+    <div class="legal-nav-in">
+      <a class="brand" routerLink="/" aria-label="Lychee home">
+        <img src="assets/landing/lychee-logo.svg" alt="Lychee" />
+      </a>
+      <nav class="legal-nav-links">
+        <a routerLink="/">{{ locale === 'ar' ? 'الرئيسية' : 'Home' }}</a>
+        <a routerLink="/privacy">{{ locale === 'ar' ? 'سياسة الخصوصية' : 'Privacy Policy' }}</a>
+        <a routerLink="/terms" class="is-active">{{ locale === 'ar' ? 'الشروط والأحكام' : 'Terms & Conditions' }}</a>
+        <button type="button" class="lang-btn" (click)="toggleLocale()">
+          {{ locale === 'ar' ? 'English' : 'العربية' }}
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="legal-wrap" *ngIf="locale === 'en'">
+    <div class="legal-hero">
+      <span class="eyebrow">Lychee Tech</span>
+      <h1>Terms and Conditions</h1>
+      <p class="meta">Binding legal agreement for use of the Lychee Platform</p>
+    </div>
+
+    <article class="legal-body">
+      <p>These Terms and Conditions ("Terms") form a binding legal agreement between you ("User," "you," or "your") and Lychee Tech ("Lychee," "we," "us," or "our") governing your access to and use of our website, mobile applications, WhatsApp payment services, QR and NFC payment tools, merchant portal, and APIs (together, the "Platform"). By creating an account, tapping "I agree," or otherwise using the Platform, you enter into this agreement with us.</p>
+      <p>If you are using the Platform on behalf of a business or organization, you confirm that you have the authority to bind that entity to these Terms, and "you" refers to that entity as well as you personally.</p>
+      <hr />
+      <h2>1. What Lychee Provides</h2>
+      <p>Lychee operates a digital voucher and payments platform. Through the Platform, users can buy, hold, and redeem digital prepaid vouchers, and merchants can accept payments and manage transactions through channels such as WhatsApp, QR codes, and NFC. We may add, change, or retire features at our discretion, and we'll use reasonable efforts to flag material changes that affect how you use the Platform.</p>
+      <p>We are a technology and payments facilitator — not a bank. Any balance, voucher, or stored value on the Platform is a product of Lychee or its partners, not a deposit account, and is not insured as a bank deposit would be.</p>
+      <hr />
+      <h2>2. Opening and Using an Account</h2>
+      <p><strong>Who can sign up.</strong> You must be at least 18, or the age of majority where you live, and legally able to enter into contracts. Accounts for minors are only permitted where set up through a school, guardian, or an approved program.</p>
+      <p><strong>Accuracy.</strong> The details you give us at signup and afterward need to be true and kept up to date. If something we hold about you changes — your phone number, for instance — update it promptly.</p>
+      <p><strong>Your credentials, your responsibility.</strong> Anything done under your login is treated as done by you. Keep your password and any authentication codes private, and tell us right away at <a href="mailto:info@lycheeapp.org">info&#64;lycheeapp.org</a> if you think someone else has accessed your account.</p>
+      <p><strong>We can decline or close accounts.</strong> We may refuse to open, or may suspend or close, an account where we reasonably believe the information provided is false, the account is being used to break these Terms, or we're required to do so by a regulator or law enforcement body.</p>
+      <hr />
+      <h2>3. Vouchers</h2>
+      <p>Each voucher comes with its own value, validity window, and any merchant or usage restrictions, which are shown to you before you buy it — those specific terms apply in addition to this section.</p>
+      <p>Vouchers must be redeemed before they expire. Once expired, we're not obliged to reinstate or refund them unless the law where you live says otherwise.</p>
+      <p>Vouchers are for the person who bought or received them and aren't a substitute for cash — you can't sell them on, swap them for money, or use them for anything illegal.</p>
+      <p>If we reasonably suspect a voucher transaction is fraudulent, mistaken, or breaks these Terms, we can pause, block, or reverse it while we look into it.</p>
+      <hr />
+      <h2>4. Payments Through the Platform</h2>
+      <p>When you pay someone or get paid through WhatsApp, QR, or NFC on the Platform, you're instructing us (and our payment partners) to carry out that transaction exactly as you set it up. That means:</p>
+      <ul>
+        <li>you need to have the funds and the right to spend them before you hit send;</li>
+        <li>transaction details — amount, date, status, the merchant involved — are logged and available to you in-app, consistent with our Privacy Policy;</li>
+        <li>if a fee applies, we'll show it to you before you confirm the payment, and we'll give you reasonable notice before any fee changes take effect going forward.</li>
+      </ul>
+      <hr />
+      <h2>5. Keeping the Platform Safe</h2>
+      <p>We run authentication, monitoring, and encryption safeguards to protect the Platform and to catch fraud early. As part of that:</p>
+      <ul>
+        <li>we may ask you to verify your identity again before certain transactions or account changes go through;</li>
+        <li>we can hold, delay, or decline a transaction we reasonably think is risky or fraudulent, and we'll try to let you know why when we can;</li>
+        <li>no system is unbreakable — while we take security seriously, we can't promise the Platform will never be compromised, and you agree to tell us immediately if you notice anything suspicious.</li>
+      </ul>
+      <hr />
+      <h2>6. Rules for Using the Platform</h2>
+      <p>You agree not to:</p>
+      <ul>
+        <li>use the Platform for anything illegal, including money laundering, sanctions evasion, or financing unlawful activity;</li>
+        <li>give us false information or impersonate someone else;</li>
+        <li>try to break into accounts, systems, or networks that aren't yours;</li>
+        <li>disrupt, overload, or interfere with how the Platform runs;</li>
+        <li>get around security features, whether ours or a merchant's;</li>
+        <li>scrape, bot, or automate access to the Platform without asking us first;</li>
+        <li>take apart, decompile, or copy our software beyond what the law allows.</li>
+      </ul>
+      <p>Breaking these rules can lead to a suspended or closed account, reversed transactions, and — where the law requires it — a report to the relevant authorities.</p>
+      <hr />
+      <h2>7. Merchants and Business Users</h2>
+      <p>If you use the merchant portal, business tools, or our APIs:</p>
+      <ul>
+        <li>you're responsible for the accuracy of the products, prices, and voucher terms you list;</li>
+        <li>you agree to honor vouchers and payments made in good faith by customers, consistent with the terms you published to them;</li>
+        <li>API access may come with its own technical and usage terms, which we'll provide separately if they apply to you;</li>
+        <li>we can suspend merchant access for conduct that harms customers, breaches these Terms, or exposes Lychee to legal or reputational risk.</li>
+      </ul>
+      <hr />
+      <h2>8. Fees</h2>
+      <p>Some parts of the Platform carry a fee, shown to you up front before you commit to a purchase or transaction. We can adjust our fees, but we'll give you reasonable notice through the app or website before a change applies to you.</p>
+      <hr />
+      <h2>9. Ownership of the Platform</h2>
+      <p>Everything that makes up the Platform — the software, branding, design, and content — belongs to Lychee or our licensors. Using the Platform gives you a personal, non-exclusive right to use it for its intended purpose; it doesn't give you ownership of any of it. You can't copy, resell, or reverse-engineer any part of it outside what's legally permitted.</p>
+      <hr />
+      <h2>10. If Something Goes Wrong</h2>
+      <p><strong>No guarantees.</strong> We provide the Platform "as is." We don't promise it will always be available, error-free, or perfectly secure, and we disclaim implied warranties to the extent the law allows us to.</p>
+      <p><strong>Limits on our liability.</strong> Where the law permits, Lychee isn't liable for indirect losses — lost profits, lost data, reputational harm, and similar knock-on effects — arising from your use of the Platform. Where we are liable, our total responsibility for any claim is capped at the fees you paid us in the twelve months before the issue arose, unless local law requires a different standard.</p>
+      <p><strong>You cover us for your misuse.</strong> If a claim, loss, or legal cost arises because you broke these Terms, misused the Platform, or violated someone else's rights, you agree to cover Lychee for the resulting costs, within what the law allows.</p>
+      <hr />
+      <h2>11. Third-Party Services</h2>
+      <p>The Platform may link to, or work alongside, services we don't control — payment networks, banks, or other websites. We're not responsible for what happens on their end; their own terms and privacy practices apply once you're using them.</p>
+      <hr />
+      <h2>12. Suspending or Ending This Agreement</h2>
+      <p>We can suspend or close your access — with or without notice — if we reasonably believe you've broken these Terms, acted fraudulently, or put the Platform, other users, or Lychee at risk. You're free to stop using the Platform and close your account any time, once any open transactions are settled. Sections that are meant to outlast the relationship — ownership, liability limits, and the cover-us clause above — stay in effect after either of us ends things.</p>
+      <hr />
+      <h2>13. Your Data</h2>
+      <p>How we handle your personal information is set out in our <a routerLink="/privacy">Privacy Policy</a>, available at lycheeapp.org. Using the Platform means you're also agreeing to that policy.</p>
+      <hr />
+      <h2>14. Legal Details</h2>
+      <p><strong>Governing law.</strong> Lychee Tech is based in, and operates the Platform from, Palestine. These Terms, and anything arising from your use of the Platform, are governed by the laws of the State of Palestine, including the payment-services and e-money regulatory framework issued by the Palestine Monetary Authority ("PMA") — among them PMA Law No. (2) of 1997, Decree-Law No. (41) of 2022 on National Payments, and any related PMA instructions on electronic payment services and e-wallets, as amended from time to time. This is without regard to conflict-of-law rules that would point to the law of any other place.</p>
+      <p><strong>Resolving disputes.</strong> If a disagreement comes up, we'll try to sort it out directly first, in good faith. Both sides will make a genuine effort to resolve things through direct discussion for at least 30 days before taking further steps.</p>
+      <p>If we can't resolve it that way, either of us may refer the dispute to arbitration under Palestinian Arbitration Law No. (3) of 2000. The arbitration will be heard by a single arbitrator, seated in Ramallah, Palestine, and conducted in Arabic (or in English, if both parties agree). The arbitrator's decision will be final and binding on both of us, and either party may apply to the competent Palestinian courts to have it recognized and enforced.</p>
+      <p>This doesn't stop either of us from going to the competent courts of Ramallah, Palestine for urgent interim relief — for example, to freeze a fraudulent transaction — before or during an arbitration, where the law allows it. For consumer disputes where local law gives you the right to bring a claim in the courts of the place where you live instead, that right isn't affected by this clause.</p>
+      <p><strong>If a clause doesn't hold up.</strong> Should any part of these Terms be found unenforceable, the rest stays in effect.</p>
+      <p><strong>No informal waivers.</strong> If we don't act on a breach right away, that doesn't mean we're giving up the right to act on it later.</p>
+      <p><strong>The whole agreement.</strong> These Terms, along with our Privacy Policy and any terms specific to a product you use, make up the full agreement between us and replace any earlier understanding on the same subject.</p>
+      <p><strong>Updates.</strong> We may revise these Terms as our Platform, and the laws around it, evolve. We'll post the current version at lycheeapp.org with an updated effective date, and continuing to use the Platform after that means you accept the changes.</p>
+      <hr />
+      <h2>15. Get in Touch</h2>
+      <p>Questions about these Terms? Reach us at:</p>
+      <p>Website: <a href="https://www.lycheeapp.org" target="_blank" rel="noopener">https://www.lycheeapp.org</a></p>
+      <p>Email: <a href="mailto:info@lycheeapp.org">info&#64;lycheeapp.org</a></p>
+    </article>
+
+    <div class="legal-footer">
+      <span>© 2026 Lychee Tech</span>
+      <a routerLink="/privacy">View Privacy Policy →</a>
+    </div>
+  </main>
+
+  <main class="legal-wrap" *ngIf="locale === 'ar'">
+    <div class="legal-hero">
+      <span class="eyebrow">Lychee Tech</span>
+      <h1>شروط وأحكام Lychee Tech</h1>
+      <p class="meta">اتفاقية قانونية ملزمة لاستخدام منصة Lychee</p>
+    </div>
+
+    <article class="legal-body">
+      <p>تشكل هذه الشروط والأحكام ("الشروط") اتفاقية قانونية ملزمة بينك ("المستخدم" أو "أنت" أو "الخاص بك") وبين Lychee Tech ("Lychee" أو "نحن" أو "لنا")، وتحكم وصولك إلى موقعنا الإلكتروني وتطبيقاتنا للهواتف المحمولة وخدمات الدفع عبر واتساب وأدوات الدفع باستخدام رموز QR وتقنية NFC وبوابة التجار وواجهات برمجة التطبيقات (API) (ويُشار إليها مجتمعة بـ"المنصة") واستخدامك لها. ومن خلال إنشاء حساب، أو النقر على "أوافق"، أو استخدام المنصة بأي طريقة أخرى، فإنك توافق على الالتزام بهذه الشروط وتبرم اتفاقية قانونية معنا.</p>
+      <p>إذا كنت تستخدم المنصة نيابةً عن شركة أو مؤسسة، فإنك تقر بأن لديك الصلاحية القانونية لإلزام تلك الجهة بهذه الشروط، ويُقصد بعبارة "أنت" في هذه الحالة كلٌّ من تلك الجهة وأنت بصفتك الشخصية.</p>
+      <hr />
+      <h2>1. ما الذي تقدمه Lychee</h2>
+      <p>تدير Lychee منصة رقمية للقسائم والمدفوعات. ومن خلال المنصة، يمكن للمستخدمين شراء القسائم الرقمية المدفوعة مسبقًا والاحتفاظ بها واستردادها، كما يمكن للتجار قبول المدفوعات وإدارة المعاملات عبر قنوات مثل واتساب ورموز QR وتقنية NFC.</p>
+      <p>يجوز لنا إضافة ميزات جديدة أو تعديلها أو إيقافها وفقًا لتقديرنا، وسنبذل جهودًا معقولة لإخطارك بأي تغييرات جوهرية تؤثر على كيفية استخدامك للمنصة.</p>
+      <p>تُعد Lychee مزودًا للتقنية وميسرًا لخدمات الدفع، وليست بنكًا. وأي رصيد أو قسيمة أو قيمة مخزنة على المنصة هي منتج مقدم من Lychee أو من شركائها، وليست حساب إيداع مصرفيًا، ولا تتمتع بالحماية أو التأمين الممنوحين للودائع البنكية.</p>
+      <hr />
+      <h2>2. إنشاء الحساب واستخدامه</h2>
+      <h3>من يمكنه التسجيل</h3>
+      <p>يجب أن يكون عمرك 18 عامًا على الأقل، أو سن الرشد القانوني في مكان إقامتك، وأن تكون مؤهلًا قانونيًا لإبرام العقود. ولا يُسمح بإنشاء حسابات للقُصّر إلا إذا تم ذلك من خلال مدرسة أو ولي أمر أو برنامج معتمد.</p>
+      <h3>دقة المعلومات</h3>
+      <p>يجب أن تكون جميع المعلومات التي تقدمها عند التسجيل أو بعده صحيحة ومحدثة. وإذا طرأ أي تغيير على بياناتك، مثل رقم الهاتف، فعليك تحديثها دون تأخير.</p>
+      <h3>بيانات الدخول مسؤوليتك</h3>
+      <p>تُعد جميع الأنشطة التي تتم باستخدام بيانات تسجيل الدخول الخاصة بك صادرةً عنك. ويجب عليك الحفاظ على سرية كلمة المرور ورموز التحقق وعدم مشاركتها مع أي شخص، وإبلاغنا فورًا عبر البريد الإلكتروني <a href="mailto:info@lycheeapp.org">info&#64;lycheeapp.org</a> إذا اعتقدت أن شخصًا آخر قد تمكن من الوصول إلى حسابك.</p>
+      <h3>رفض أو إغلاق الحساب</h3>
+      <p>يجوز لنا رفض إنشاء حساب أو تعليقه أو إغلاقه إذا كان لدينا سبب معقول للاعتقاد بأن المعلومات المقدمة غير صحيحة، أو أن الحساب يُستخدم بما يخالف هذه الشروط، أو إذا كنا ملزمين بذلك بموجب القانون أو بناءً على طلب جهة تنظيمية أو جهة إنفاذ قانون.</p>
+      <hr />
+      <h2>3. القسائم الرقمية</h2>
+      <ul>
+        <li>لكل قسيمة قيمة مالية خاصة بها، وفترة صلاحية، وأي قيود تتعلق بالتاجر أو بطريقة الاستخدام، ويتم عرض هذه الشروط قبل إتمام عملية الشراء، وتُعد جزءًا مكملًا لهذه الشروط.</li>
+        <li>يجب استخدام القسائم قبل انتهاء صلاحيتها. وبعد انتهاء الصلاحية، لسنا ملزمين بإعادة تفعيلها أو رد قيمتها، ما لم يقتضِ القانون المعمول به خلاف ذلك.</li>
+        <li>القسائم مخصصة للشخص الذي اشتراها أو تلقاها، ولا تُعد بديلًا للنقد، ولا يجوز بيعها أو استبدالها بالنقود أو استخدامها في أي نشاط غير قانوني.</li>
+        <li>إذا اشتبهنا بشكل معقول في أن أي معاملة تتعلق بقسيمة تنطوي على احتيال أو خطأ أو مخالفة لهذه الشروط، فيحق لنا تعليقها أو حظرها أو عكسها إلى حين الانتهاء من التحقيق.</li>
+      </ul>
+      <hr />
+      <h2>4. المدفوعات عبر المنصة</h2>
+      <p>عند إرسال أو استلام دفعة عبر واتساب أو رمز QR أو تقنية NFC باستخدام المنصة، فإنك تصدر تعليمات لنا (ولشركائنا في خدمات الدفع) بتنفيذ تلك المعاملة وفقًا للتفاصيل التي حددتها.</p>
+      <p>وهذا يعني أنك:</p>
+      <ul>
+        <li>تتحمل مسؤولية التأكد من توفر الأموال وحقك في استخدامها قبل إرسال الدفعة.</li>
+        <li>توافق على تسجيل تفاصيل المعاملة، بما في ذلك المبلغ والتاريخ والحالة والتاجر، وإتاحتها لك داخل التطبيق بما يتوافق مع سياسة الخصوصية.</li>
+        <li>سيتم إعلامك بأي رسوم تُطبق قبل تأكيد الدفع، كما سنقدم إشعارًا معقولًا قبل تطبيق أي تعديل مستقبلي على الرسوم.</li>
+      </ul>
+      <hr />
+      <h2>5. حماية المنصة</h2>
+      <p>نستخدم وسائل تحقق ومراقبة وتشفير لحماية المنصة والكشف المبكر عن الاحتيال. وبناءً على ذلك:</p>
+      <ul>
+        <li>قد نطلب منك إعادة التحقق من هويتك قبل تنفيذ بعض المعاملات أو تعديل معلومات الحساب.</li>
+        <li>يجوز لنا تعليق أو تأخير أو رفض أي معاملة إذا كان لدينا سبب معقول للاعتقاد بأنها تنطوي على مخاطر أو احتيال، وسنسعى إلى توضيح السبب متى كان ذلك ممكنًا.</li>
+        <li>لا توجد أي منظومة تقنية محصنة بالكامل ضد الاختراق، ولذلك، رغم اتخاذنا تدابير أمنية مناسبة، لا يمكننا ضمان عدم تعرض المنصة لأي اختراق، وتلتزم بإبلاغنا فورًا إذا لاحظت أي نشاط مشبوه.</li>
+      </ul>
+      <hr />
+      <h2>6. قواعد استخدام المنصة</h2>
+      <p>توافق على عدم القيام بما يلي:</p>
+      <ul>
+        <li>استخدام المنصة لأي غرض غير قانوني، بما في ذلك غسل الأموال أو التهرب من العقوبات أو تمويل أنشطة غير مشروعة.</li>
+        <li>تقديم معلومات غير صحيحة أو انتحال شخصية أي شخص آخر.</li>
+        <li>محاولة الوصول غير المصرح به إلى الحسابات أو الأنظمة أو الشبكات.</li>
+        <li>تعطيل المنصة أو تحميلها بما يؤثر في تشغيلها أو التدخل في عملها.</li>
+        <li>تجاوز أو تعطيل أي وسائل حماية أو أمان خاصة بنا أو بالتجار.</li>
+        <li>استخدام برامج آلية أو روبوتات أو أدوات لاستخراج البيانات من المنصة دون موافقتنا.</li>
+        <li>نسخ برامجنا أو تفكيكها أو إجراء هندسة عكسية لها بما يتجاوز ما يسمح به القانون.</li>
+      </ul>
+      <p>وقد يؤدي انتهاك هذه القواعد إلى تعليق أو إغلاق الحساب، أو إلغاء المعاملات، أو إبلاغ الجهات المختصة متى كان ذلك مطلوبًا بموجب القانون.</p>
+      <hr />
+      <h2>7. التجار ومستخدمو الأعمال</h2>
+      <p>إذا كنت تستخدم بوابة التجار أو أدوات الأعمال أو واجهات برمجة التطبيقات (API)، فإنك توافق على ما يلي:</p>
+      <ul>
+        <li>تتحمل مسؤولية صحة المنتجات والأسعار وشروط القسائم التي تنشرها.</li>
+        <li>تلتزم بقبول القسائم والمدفوعات التي يجريها العملاء بحسن نية وفقًا للشروط التي أعلنتها لهم.</li>
+        <li>قد تخضع واجهات برمجة التطبيقات لشروط تقنية واستخدام إضافية يتم تزويدك بها عند الاقتضاء.</li>
+        <li>يجوز لنا تعليق وصول التاجر إلى المنصة إذا تسبب سلوكه في الإضرار بالعملاء أو خالف هذه الشروط أو عرض Lychee لمخاطر قانونية أو تتعلق بالسمعة.</li>
+      </ul>
+      <hr />
+      <h2>8. الرسوم</h2>
+      <p>قد تُفرض رسوم على بعض خدمات المنصة، ويتم عرضها لك بوضوح قبل إتمام عملية الشراء أو المعاملة. ويجوز لنا تعديل الرسوم مستقبلًا، مع تقديم إشعار مناسب عبر التطبيق أو الموقع الإلكتروني قبل سريان التعديل.</p>
+      <hr />
+      <h2>9. ملكية المنصة</h2>
+      <p>جميع عناصر المنصة، بما في ذلك البرامج والعلامات التجارية والتصميم والمحتوى، مملوكة لشركة Lychee أو للجهات المرخصة لها.</p>
+      <p>ويمنحك استخدام المنصة حقًا شخصيًا وغير حصري لاستخدامها للغرض المخصص لها، دون أن يترتب على ذلك نقل أي حقوق ملكية إليك.</p>
+      <p>ولا يجوز لك نسخ أي جزء من المنصة أو إعادة بيعه أو إجراء هندسة عكسية له إلا في الحدود التي يسمح بها القانون.</p>
+      <hr />
+      <h2>10. إذا حدثت مشكلة</h2>
+      <h3>عدم تقديم ضمانات</h3>
+      <p>تُقدم المنصة "كما هي". ولا نضمن أنها ستكون متاحة دائمًا أو خالية من الأخطاء أو آمنة بشكل كامل، ونستبعد أي ضمانات ضمنية إلى الحد الذي يسمح به القانون.</p>
+      <h3>حدود مسؤوليتنا</h3>
+      <p>حيثما يسمح القانون بذلك، لا تتحمل Lychee المسؤولية عن الخسائر غير المباشرة — مثل فقدان الأرباح أو فقدان البيانات أو الأضرار المتعلقة بالسمعة والآثار التبعية المماثلة — الناشئة عن استخدامك للمنصة. وحيثما نكون مسؤولين، يقتصر إجمالي مسؤوليتنا عن أي مطالبة على الرسوم التي دفعتها لنا خلال الاثني عشر شهرًا السابقة لنشوء المشكلة، ما لم يقتضِ القانون المحلي معيارًا مختلفًا.</p>
+      <h3>تعويضك لنا عن إساءة الاستخدام</h3>
+      <p>إذا نشأت أي مطالبة أو خسارة أو تكلفة قانونية بسبب مخالفتك لهذه الشروط أو إساءة استخدامك للمنصة أو انتهاكك لحقوق أي طرف آخر، فإنك توافق على تعويض Lychee عن التكاليف الناتجة، في الحدود التي يسمح بها القانون.</p>
+      <hr />
+      <h2>11. خدمات الأطراف الثالثة</h2>
+      <p>قد ترتبط المنصة بخدمات لا نتحكم بها — مثل شبكات الدفع أو البنوك أو مواقع أخرى — أو تعمل إلى جانبها. ولسنا مسؤولين عما يحدث على تلك الجهات؛ وتُطبق شروطها وممارسات الخصوصية الخاصة بها بمجرد استخدامك لها.</p>
+      <hr />
+      <h2>12. تعليق هذه الاتفاقية أو إنهاؤها</h2>
+      <p>يجوز لنا تعليق أو إغلاق وصولك — بإشعار أو بدونه — إذا كان لدينا سبب معقول للاعتقاد بأنك خالفت هذه الشروط أو تصرفت بصورة احتيالية أو عرّضت المنصة أو المستخدمين الآخرين أو Lychee للخطر. ويحق لك التوقف عن استخدام المنصة وإغلاق حسابك في أي وقت، بعد تسوية أي معاملات مفتوحة. وتظل الأحكام المقصود منها أن تستمر بعد انتهاء العلاقة — مثل الملكية وحدود المسؤولية وبند التعويض أعلاه — سارية بعد إنهاء أي من الطرفين لهذه الاتفاقية.</p>
+      <hr />
+      <h2>13. بياناتك</h2>
+      <p>كيفية تعاملنا مع معلوماتك الشخصية موضحة في <a routerLink="/privacy">سياسة الخصوصية</a> المتاحة على lycheeapp.org. ويعني استخدامك للمنصة أنك توافق أيضًا على تلك السياسة.</p>
+      <hr />
+      <h2>14. التفاصيل القانونية</h2>
+      <p><strong>القانون الحاكم.</strong> يقع مقر Lychee Tech في فلسطين وتدير المنصة منها. وتخضع هذه الشروط وأي أمر ينشأ عن استخدامك للمنصة لقوانين دولة فلسطين، بما في ذلك الإطار التنظيمي لخدمات الدفع والنقود الإلكترونية الصادر عن سلطة النقد الفلسطينية ("سلطة النقد") — ومن بينها قانون سلطة النقد رقم (2) لسنة 1997، ومرسوم بقانون رقم (41) لسنة 2022 بشأن المدفوعات الوطنية، وأي تعليمات ذات صلة صادرة عن سلطة النقد بشأن خدمات الدفع الإلكتروني والمحافظ الإلكترونية، بصيغتها المعدلة من وقت لآخر. وذلك دون مراعاة لقواعد تنازع القوانين التي قد تشير إلى قانون أي مكان آخر.</p>
+      <p><strong>حل النزاعات.</strong> إذا نشأ خلاف، فسنسعى أولًا إلى حله مباشرةً وبحسن نية. ويبذل الطرفان جهدًا حقيقيًا لتسوية الأمور عبر النقاش المباشر لمدة لا تقل عن 30 يومًا قبل اتخاذ أي خطوات لاحقة.</p>
+      <p>وإذا تعذر الحل بهذه الطريقة، يجوز لأي منا إحالة النزاع إلى التحكيم بموجب قانون التحكيم الفلسطيني رقم (3) لسنة 2000. ويُنظر التحكيم أمام محكّم فرد، ومقره رام الله، فلسطين، ويُجرى بالعربية (أو بالإنجليزية إذا اتفق الطرفان). ويكون قرار المحكّم نهائيًا وملزمًا لنا، ويجوز لأي طرف التقدم إلى المحاكم الفلسطينية المختصة للاعتراف به وتنفيذه.</p>
+      <p>ولا يمنع ذلك أيًّا منا من اللجوء إلى المحاكم المختصة في رام الله، فلسطين، لطلب تدابير مؤقتة عاجلة — مثل تجميد معاملة احتيالية — قبل التحكيم أو خلاله، حيثما يسمح القانون بذلك. وبالنسبة لنزاعات المستهلكين التي يمنحك فيها القانون المحلي الحق في رفع دعوى أمام محاكم مكان إقامتك بدلًا من ذلك، فإن هذا الحق لا يتأثر بهذا البند.</p>
+      <p><strong>إذا لم يصمد أحد البنود.</strong> إذا تبيّن أن أي جزء من هذه الشروط غير قابل للتنفيذ، تظل بقية الشروط سارية.</p>
+      <p><strong>لا تنازل غير رسمي.</strong> إذا لم نتصرف فورًا تجاه مخالفة ما، فإن ذلك لا يعني تنازلنا عن الحق في التصرف لاحقًا.</p>
+      <p><strong>الاتفاق الكامل.</strong> تشكّل هذه الشروط، إلى جانب سياسة الخصوصية وأي شروط خاصة بمنتج تستخدمه، الاتفاق الكامل بيننا وتحل محل أي تفاهم سابق حول الموضوع نفسه.</p>
+      <p><strong>التحديثات.</strong> يجوز لنا مراجعة هذه الشروط مع تطور المنصة والقوانين المحيطة بها. وسننشر النسخة الحالية على lycheeapp.org مع تاريخ سريان محدّث، ويعني استمرارك في استخدام المنصة بعد ذلك قبولك للتغييرات.</p>
+      <hr />
+      <h2>15. تواصل معنا</h2>
+      <p>للاستفسار عن هذه الشروط، راسلنا عبر:</p>
+      <p>الموقع الإلكتروني: <a href="https://www.lycheeapp.org" target="_blank" rel="noopener">https://www.lycheeapp.org</a></p>
+      <p>البريد الإلكتروني: <a href="mailto:info@lycheeapp.org">info&#64;lycheeapp.org</a></p>
+    </article>
+
+    <div class="legal-footer">
+      <span>© 2026 Lychee Tech</span>
+      <a routerLink="/privacy">عرض سياسة الخصوصية ←</a>
+    </div>
+  </main>
+</div>

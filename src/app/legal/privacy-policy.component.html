@@ -1,0 +1,399 @@
+<div class="legal-page">
+  <header class="legal-nav">
+    <div class="legal-nav-in">
+      <a class="brand" routerLink="/" aria-label="Lychee home">
+        <img src="assets/landing/lychee-logo.svg" alt="Lychee" />
+      </a>
+      <nav class="legal-nav-links">
+        <a routerLink="/">{{ locale === 'ar' ? 'الرئيسية' : 'Home' }}</a>
+        <a routerLink="/privacy" class="is-active">{{ locale === 'ar' ? 'سياسة الخصوصية' : 'Privacy Policy' }}</a>
+        <a routerLink="/terms">{{ locale === 'ar' ? 'الشروط والأحكام' : 'Terms & Conditions' }}</a>
+        <button type="button" class="lang-btn" (click)="toggleLocale()">
+          {{ locale === 'ar' ? 'English' : 'العربية' }}
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="legal-wrap" *ngIf="locale === 'en'">
+    <div class="legal-hero">
+      <span class="eyebrow">Lychee Tech</span>
+      <h1>Privacy Policy</h1>
+      <p class="meta">Effective Date: July 22, 2026</p>
+    </div>
+
+    <article class="legal-body">
+      <h2>1. Introduction</h2>
+      <p>Welcome to Lychee Tech (“Lychee”, “we”, “our”, or “us”).</p>
+      <p>Your privacy is important to us. This Privacy Policy explains how we collect, use, store, disclose, and protect your personal information when you access or use our website, mobile applications, WhatsApp payment services, merchant portals, APIs, and any other services provided by Lychee (collectively, the “Services”).</p>
+      <p>By accessing or using our Services, you acknowledge that you have read, understood, and agreed to this Privacy Policy.</p>
+      <hr />
+      <h2>2. About Lychee</h2>
+      <p>Lychee Tech is a financial technology company providing digital prepaid voucher solutions and digital payment services that enable individuals, merchants, and businesses to securely purchase, redeem, and manage digital vouchers through multiple digital channels.</p>
+      <p>This Privacy Policy applies to all Lychee products and services, including:</p>
+      <ul>
+        <li>Website</li>
+        <li>Mobile Applications</li>
+        <li>WhatsApp Payment Services</li>
+        <li>QR Payment Services</li>
+        <li>NFC Payment Services</li>
+        <li>Merchant Portal</li>
+        <li>Business Services</li>
+        <li>APIs and integrated digital solutions</li>
+      </ul>
+      <hr />
+      <h2>3. Information We Collect</h2>
+      <p>Depending on the Services you use, we may collect the following information:</p>
+      <h3>Personal Information</h3>
+      <ul>
+        <li>Full name</li>
+        <li>Mobile phone number</li>
+        <li>Email address</li>
+        <li>Date of birth (where applicable)</li>
+        <li>Profile information</li>
+      </ul>
+      <h3>Account Information</h3>
+      <ul>
+        <li>User ID</li>
+        <li>Login credentials</li>
+        <li>Account preferences</li>
+        <li>Authentication information</li>
+      </ul>
+      <h3>Transaction Information</h3>
+      <ul>
+        <li>Voucher purchases</li>
+        <li>Payment transactions</li>
+        <li>Redemption history</li>
+        <li>Merchant information</li>
+        <li>Transaction amounts</li>
+        <li>Transaction dates and status</li>
+      </ul>
+      <h3>Device Information</h3>
+      <ul>
+        <li>IP address</li>
+        <li>Device type</li>
+        <li>Operating system</li>
+        <li>Browser type</li>
+        <li>Application version</li>
+        <li>Device identifiers</li>
+        <li>Error logs</li>
+      </ul>
+      <h3>Location Information</h3>
+      <p>With your permission, we may collect location information to:</p>
+      <ul>
+        <li>Improve our Services</li>
+        <li>Help locate nearby merchants</li>
+        <li>Detect fraud</li>
+        <li>Enhance security</li>
+      </ul>
+      <h3>Customer Support Information</h3>
+      <p>Information you provide when contacting our support team, including inquiries, complaints, feedback, and communications.</p>
+      <hr />
+      <h2>4. How We Collect Information</h2>
+      <p>Information may be collected when you:</p>
+      <ul>
+        <li>Register for an account</li>
+        <li>Use our website or mobile application</li>
+        <li>Purchase or redeem digital vouchers</li>
+        <li>Make payments</li>
+        <li>Contact customer support</li>
+        <li>Use WhatsApp payment services</li>
+        <li>Interact with merchants</li>
+        <li>Visit our website using cookies and similar technologies</li>
+      </ul>
+      <p>We may also receive information from trusted service providers, payment partners, and regulatory authorities where permitted or required by law.</p>
+      <hr />
+      <h2>5. How We Use Your Information</h2>
+      <p>We use your information to:</p>
+      <ul>
+        <li>Create and manage your account</li>
+        <li>Deliver our Services</li>
+        <li>Process digital voucher transactions</li>
+        <li>Process payments</li>
+        <li>Verify identity where required</li>
+        <li>Prevent fraud and financial crime</li>
+        <li>Improve customer experience</li>
+        <li>Provide customer support</li>
+        <li>Send service-related notifications</li>
+        <li>Maintain platform security</li>
+        <li>Comply with legal and regulatory obligations</li>
+        <li>Develop new products and services</li>
+      </ul>
+      <hr />
+      <h2>6. Sharing Your Information</h2>
+      <p>Lychee does not sell or rent your personal information.</p>
+      <p>We may share information only when necessary with:</p>
+      <ul>
+        <li>Payment service providers</li>
+        <li>Financial institutions and banking partners</li>
+        <li>Cloud hosting providers</li>
+        <li>Technology service providers</li>
+        <li>Regulatory and governmental authorities where legally required</li>
+        <li>Professional advisors, auditors, or legal consultants</li>
+        <li>Other parties where you have provided your consent or where disclosure is required by law</li>
+      </ul>
+      <p>All third parties receiving personal information are required to protect it and use it only for authorized purposes.</p>
+      <hr />
+      <h2>7. Data Security</h2>
+      <p>Lychee implements appropriate technical, organizational, and administrative safeguards designed to protect personal information against unauthorized access, alteration, disclosure, loss, or misuse.</p>
+      <p>These safeguards include:</p>
+      <ul>
+        <li>Encryption</li>
+        <li>Secure authentication</li>
+        <li>Access controls</li>
+        <li>Security monitoring</li>
+        <li>System logging</li>
+        <li>Regular security assessments</li>
+      </ul>
+      <p>Although we strive to protect your information, no internet-based system can be guaranteed to be completely secure.</p>
+      <hr />
+      <h2>8. Data Retention</h2>
+      <p>We retain personal information only for as long as necessary to:</p>
+      <ul>
+        <li>Provide our Services</li>
+        <li>Comply with legal and regulatory obligations</li>
+        <li>Resolve disputes</li>
+        <li>Enforce our agreements</li>
+        <li>Protect our legitimate interests</li>
+      </ul>
+      <p>When personal information is no longer required, it will be securely deleted or anonymized.</p>
+      <hr />
+      <h2>9. Cookies</h2>
+      <p>Our website may use cookies and similar technologies to:</p>
+      <ul>
+        <li>Improve website functionality</li>
+        <li>Remember user preferences</li>
+        <li>Analyze website performance</li>
+        <li>Enhance security</li>
+      </ul>
+      <p>Users may control cookie settings through their web browser. Disabling cookies may affect certain website features.</p>
+      <hr />
+      <h2>10. Your Rights</h2>
+      <p>Subject to applicable laws, you may have the right to:</p>
+      <ul>
+        <li>Access your personal information</li>
+        <li>Correct inaccurate information</li>
+        <li>Update your account details</li>
+        <li>Request deletion of personal information where legally permitted</li>
+        <li>Object to certain processing activities</li>
+        <li>Withdraw consent where processing is based on consent</li>
+      </ul>
+      <p>Identity verification may be required before processing certain requests.</p>
+      <hr />
+      <h2>11. Children’s Privacy</h2>
+      <p>Lychee’s Services are not intended for children unless provided through authorized educational institutions, parents, guardians, or legally approved programs.</p>
+      <hr />
+      <h2>12. Third-Party Links</h2>
+      <p>Our Services may contain links to third-party websites or services. Lychee is not responsible for the privacy practices or content of those external websites.</p>
+      <hr />
+      <h2>13. Changes to this Privacy Policy</h2>
+      <p>We may update this Privacy Policy from time to time to reflect legal, regulatory, operational, or technological changes.</p>
+      <p>The updated version will be published on our official website, and the revised Effective Date will appear at the top of this document.</p>
+      <hr />
+      <h2>14. Contact Us</h2>
+      <p>If you have any questions regarding this Privacy Policy or our privacy practices, please contact us:</p>
+      <p>Website: <a href="https://www.lycheeapp.org" target="_blank" rel="noopener">https://www.lycheeapp.org</a></p>
+      <p>Email: <a href="mailto:info@lycheeapp.org">info&#64;lycheeapp.org</a></p>
+      <p>Customer support is also available through our website and official communication channels.</p>
+      <hr />
+      <h2>15. Acceptance of this Privacy Policy</h2>
+      <p>By accessing or using any Lychee service, website, application, or digital platform, you acknowledge that you have read, understood, and accepted this Privacy Policy and consent to the collection and processing of your information as described herein and in accordance with applicable laws and regulations.</p>
+    </article>
+
+    <div class="legal-footer">
+      <span>© 2026 Lychee Tech</span>
+      <a routerLink="/terms">View Terms &amp; Conditions →</a>
+    </div>
+  </main>
+
+  <main class="legal-wrap" *ngIf="locale === 'ar'">
+    <div class="legal-hero">
+      <span class="eyebrow">ليتشي تِك (Lychee Tech)</span>
+      <h1>سياسة الخصوصية</h1>
+      <p class="meta">تاريخ السريان: 22 تموز/يوليو 2026</p>
+    </div>
+
+    <article class="legal-body">
+      <h2>1. مقدمة</h2>
+      <p>مرحبًا بكم في ليتشي تِك ("ليتشي"، "نحن"، "لنا"، أو "الخاص بنا").</p>
+      <p>خصوصيتك تهمّنا. توضّح سياسة الخصوصية هذه كيفية جمعنا لمعلوماتك الشخصية واستخدامها وتخزينها والإفصاح عنها وحمايتها عند وصولك إلى موقعنا الإلكتروني، أو تطبيقاتنا للهواتف المحمولة، أو خدمات الدفع عبر واتساب، أو بوابات التجار، أو واجهات برمجة التطبيقات (APIs)، أو أي خدمات أخرى تقدّمها ليتشي (يُشار إليها مجتمعةً بـ"الخدمات")، أو استخدامك لها.</p>
+      <p>بوصولك إلى خدماتنا أو استخدامك لها، فإنك تقرّ بأنك قد قرأت سياسة الخصوصية هذه وفهمتها ووافقت عليها.</p>
+      <hr />
+      <h2>2. عن ليتشي</h2>
+      <p>ليتشي تِك هي شركة تكنولوجيا مالية تقدّم حلول القسائم الرقمية المدفوعة مسبقًا وخدمات الدفع الرقمي، والتي تُمكّن الأفراد والتجار والشركات من شراء القسائم الرقمية واستبدالها وإدارتها بشكل آمن عبر قنوات رقمية متعددة.</p>
+      <p>تنطبق سياسة الخصوصية هذه على جميع منتجات وخدمات ليتشي، بما في ذلك:</p>
+      <ul>
+        <li>الموقع الإلكتروني</li>
+        <li>تطبيقات الهواتف المحمولة</li>
+        <li>خدمات الدفع عبر واتساب</li>
+        <li>خدمات الدفع عبر رمز الاستجابة السريعة (QR)</li>
+        <li>خدمات الدفع عبر تقنية الاتصال قريب المدى (NFC)</li>
+        <li>بوابة التجار</li>
+        <li>خدمات الأعمال</li>
+        <li>واجهات برمجة التطبيقات (APIs) والحلول الرقمية المتكاملة</li>
+      </ul>
+      <hr />
+      <h2>3. المعلومات التي نجمعها</h2>
+      <p>بحسب الخدمات التي تستخدمها، قد نجمع المعلومات التالية:</p>
+      <h3>المعلومات الشخصية</h3>
+      <ul>
+        <li>الاسم الكامل</li>
+        <li>رقم الهاتف المحمول</li>
+        <li>عنوان البريد الإلكتروني</li>
+        <li>تاريخ الميلاد (عند الاقتضاء)</li>
+        <li>معلومات الملف الشخصي</li>
+      </ul>
+      <h3>معلومات الحساب</h3>
+      <ul>
+        <li>معرّف المستخدم</li>
+        <li>بيانات تسجيل الدخول</li>
+        <li>تفضيلات الحساب</li>
+        <li>معلومات المصادقة</li>
+      </ul>
+      <h3>معلومات المعاملات</h3>
+      <ul>
+        <li>عمليات شراء القسائم</li>
+        <li>معاملات الدفع</li>
+        <li>سجلّ عمليات الاستبدال</li>
+        <li>معلومات التاجر</li>
+        <li>مبالغ المعاملات</li>
+        <li>تواريخ المعاملات وحالتها</li>
+      </ul>
+      <h3>معلومات الجهاز</h3>
+      <ul>
+        <li>عنوان بروتوكول الإنترنت (IP)</li>
+        <li>نوع الجهاز</li>
+        <li>نظام التشغيل</li>
+        <li>نوع المتصفح</li>
+        <li>إصدار التطبيق</li>
+        <li>معرّفات الجهاز</li>
+        <li>سجلات الأخطاء</li>
+      </ul>
+      <h3>معلومات الموقع الجغرافي</h3>
+      <p>بموافقتك، قد نجمع معلومات الموقع الجغرافي من أجل:</p>
+      <ul>
+        <li>تحسين خدماتنا</li>
+        <li>المساعدة في تحديد التجار القريبين منك</li>
+        <li>كشف الاحتيال</li>
+        <li>تعزيز الأمان</li>
+      </ul>
+      <h3>معلومات دعم العملاء</h3>
+      <p>المعلومات التي تقدّمها عند التواصل مع فريق الدعم لدينا، بما في ذلك الاستفسارات والشكاوى والملاحظات والمراسلات.</p>
+      <hr />
+      <h2>4. كيف نجمع المعلومات</h2>
+      <p>قد تُجمع المعلومات عندما تقوم بما يلي:</p>
+      <ul>
+        <li>تسجيل حساب</li>
+        <li>استخدام موقعنا الإلكتروني أو تطبيقنا للهواتف المحمولة</li>
+        <li>شراء القسائم الرقمية أو استبدالها</li>
+        <li>إجراء عمليات الدفع</li>
+        <li>التواصل مع دعم العملاء</li>
+        <li>استخدام خدمات الدفع عبر واتساب</li>
+        <li>التعامل مع التجار</li>
+        <li>زيارة موقعنا الإلكتروني باستخدام ملفات تعريف الارتباط والتقنيات المشابهة</li>
+      </ul>
+      <p>كما قد نتلقّى معلومات من مزوّدي خدمات موثوقين، وشركاء الدفع، والجهات التنظيمية، حيثما يسمح القانون بذلك أو يقتضيه.</p>
+      <hr />
+      <h2>5. كيف نستخدم معلوماتك</h2>
+      <p>نستخدم معلوماتك من أجل:</p>
+      <ul>
+        <li>إنشاء حسابك وإدارته</li>
+        <li>تقديم خدماتنا</li>
+        <li>معالجة معاملات القسائم الرقمية</li>
+        <li>معالجة المدفوعات</li>
+        <li>التحقق من الهوية عند الحاجة</li>
+        <li>منع الاحتيال والجرائم المالية</li>
+        <li>تحسين تجربة العملاء</li>
+        <li>تقديم الدعم للعملاء</li>
+        <li>إرسال الإشعارات المتعلقة بالخدمة</li>
+        <li>الحفاظ على أمان المنصة</li>
+        <li>الامتثال للالتزامات القانونية والتنظيمية</li>
+        <li>تطوير منتجات وخدمات جديدة</li>
+      </ul>
+      <hr />
+      <h2>6. مشاركة معلوماتك</h2>
+      <p>لا تبيع ليتشي معلوماتك الشخصية ولا تؤجّرها.</p>
+      <p>قد نشارك المعلومات عند الضرورة فقط مع:</p>
+      <ul>
+        <li>مزوّدي خدمات الدفع</li>
+        <li>المؤسسات المالية والشركاء المصرفيين</li>
+        <li>مزوّدي خدمات الاستضافة السحابية</li>
+        <li>مزوّدي الخدمات التقنية</li>
+        <li>الجهات التنظيمية والحكومية عندما يقتضي القانون ذلك</li>
+        <li>المستشارين المهنيين أو المدققين أو المستشارين القانونيين</li>
+        <li>أي أطراف أخرى وافقت على مشاركتها معها، أو حيثما يكون الإفصاح مطلوبًا بموجب القانون</li>
+      </ul>
+      <p>يُلزَم جميع الأطراف الثالثة التي تتلقّى معلومات شخصية بحمايتها واستخدامها للأغراض المصرّح بها فقط.</p>
+      <hr />
+      <h2>7. أمن البيانات</h2>
+      <p>تطبّق ليتشي ضمانات تقنية وتنظيمية وإدارية مناسبة، مصمّمة لحماية المعلومات الشخصية من الوصول غير المصرّح به، أو التعديل، أو الإفصاح، أو الفقدان، أو سوء الاستخدام.</p>
+      <p>وتشمل هذه الضمانات:</p>
+      <ul>
+        <li>التشفير</li>
+        <li>المصادقة الآمنة</li>
+        <li>ضوابط الوصول</li>
+        <li>المراقبة الأمنية</li>
+        <li>تسجيل أحداث النظام</li>
+        <li>التقييمات الأمنية الدورية</li>
+      </ul>
+      <p>وعلى الرغم من سعينا لحماية معلوماتك، لا يمكن ضمان أن يكون أي نظام يعتمد على الإنترنت آمنًا بشكل كامل.</p>
+      <hr />
+      <h2>8. الاحتفاظ بالبيانات</h2>
+      <p>نحتفظ بالمعلومات الشخصية للمدة اللازمة فقط من أجل:</p>
+      <ul>
+        <li>تقديم خدماتنا</li>
+        <li>الامتثال للالتزامات القانونية والتنظيمية</li>
+        <li>تسوية النزاعات</li>
+        <li>إنفاذ اتفاقياتنا</li>
+        <li>حماية مصالحنا المشروعة</li>
+      </ul>
+      <p>وعندما لا تعود المعلومات الشخصية مطلوبة، يتم حذفها بشكل آمن أو إخفاء هويتها.</p>
+      <hr />
+      <h2>9. ملفات تعريف الارتباط (Cookies)</h2>
+      <p>قد يستخدم موقعنا الإلكتروني ملفات تعريف الارتباط والتقنيات المشابهة من أجل:</p>
+      <ul>
+        <li>تحسين وظائف الموقع</li>
+        <li>تذكّر تفضيلات المستخدم</li>
+        <li>تحليل أداء الموقع</li>
+        <li>تعزيز الأمان</li>
+      </ul>
+      <p>يمكن للمستخدمين التحكم في إعدادات ملفات تعريف الارتباط من خلال متصفح الويب الخاص بهم، وقد يؤثر تعطيلها على بعض ميزات الموقع.</p>
+      <hr />
+      <h2>10. حقوقك</h2>
+      <p>مع مراعاة القوانين المعمول بها، قد يحق لك:</p>
+      <ul>
+        <li>الوصول إلى معلوماتك الشخصية</li>
+        <li>تصحيح المعلومات غير الدقيقة</li>
+        <li>تحديث بيانات حسابك</li>
+        <li>طلب حذف المعلومات الشخصية حيثما يسمح القانون بذلك</li>
+        <li>الاعتراض على أنشطة معالجة معيّنة</li>
+        <li>سحب موافقتك حين تستند المعالجة إلى الموافقة</li>
+      </ul>
+      <p>وقد يُطلب التحقق من الهوية قبل معالجة بعض الطلبات.</p>
+      <hr />
+      <h2>11. خصوصية الأطفال</h2>
+      <p>خدمات ليتشي غير موجّهة للأطفال، ما لم تُقدَّم من خلال مؤسسات تعليمية مصرّح لها، أو الوالدين، أو الأوصياء، أو البرامج المعتمدة قانونًا.</p>
+      <hr />
+      <h2>12. روابط الأطراف الثالثة</h2>
+      <p>قد تحتوي خدماتنا على روابط لمواقع أو خدمات تابعة لأطراف ثالثة. ولا تتحمّل ليتشي المسؤولية عن ممارسات الخصوصية أو المحتوى الخاص بتلك المواقع الخارجية.</p>
+      <hr />
+      <h2>13. التغييرات على سياسة الخصوصية هذه</h2>
+      <p>قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر لتعكس التغييرات القانونية أو التنظيمية أو التشغيلية أو التقنية.</p>
+      <p>وسيتم نشر النسخة المحدَّثة على موقعنا الرسمي، وسيظهر تاريخ السريان المعدَّل في أعلى هذه الوثيقة.</p>
+      <hr />
+      <h2>14. اتصل بنا</h2>
+      <p>إذا كان لديك أي استفسارات بخصوص سياسة الخصوصية هذه أو ممارساتنا المتعلقة بالخصوصية، يرجى التواصل معنا:</p>
+      <p><strong>الموقع الإلكتروني:</strong> <a href="https://www.lycheeapp.org" target="_blank" rel="noopener">https://www.lycheeapp.org</a></p>
+      <p><strong>البريد الإلكتروني:</strong> <a href="mailto:info@lycheeapp.org">info&#64;lycheeapp.org</a></p>
+      <p>كما يتوفّر دعم العملاء عبر موقعنا الإلكتروني وقنوات التواصل الرسمية.</p>
+      <hr />
+      <h2>15. قبول سياسة الخصوصية هذه</h2>
+      <p>من خلال الوصول إلى أي من خدمات ليتشي أو مواقعها أو تطبيقاتها أو منصاتها الرقمية أو استخدامها، فإنك تقرّ بأنك قد قرأت سياسة الخصوصية هذه وفهمتها وقبلتها، وتوافق على جمع معلوماتك ومعالجتها على النحو الموضّح فيها، ووفقًا للقوانين واللوائح المعمول بها.</p>
+    </article>
+
+    <div class="legal-footer">
+      <span>© 2026 ليتشي تِك</span>
+      <a routerLink="/terms">عرض الشروط والأحكام ←</a>
+    </div>
+  </main>
+</div>
