@@ -60,24 +60,24 @@ export class AboutComponent implements OnInit, OnDestroy {
 
   leadership: Leader[] = [
     {
-      name: L('عمّار عكر', 'Ammar Aker'),
-      role: L('الرئيس التنفيذي', 'Chief Executive Officer'),
-      bio: L(
-        'عمّار عكر الرئيس التنفيذي لمجموعة الاتصالات الفلسطينية وعضو مجلس إدارتها. قاد سابقًا جوال كأكبر مشغّل خلوي خاص في فلسطين، ويرأس مجلس إدارة VTEL MEA، ويشغل عضوية مجالس في باديكو القابضة ومجلس أمناء جامعة النجاح. حاصل على بكالوريوس المحاسبة من جامعة إدينبورو في بنسلفانيا وماجستير المحاسبة من جامعة كينت ستيت في أوهايو.',
-        'Ammar Aker is CEO of Palestine Telecom Group (Paltel) and a member of its Board of Directors. He previously led Jawwal, Palestine’s first private cellular operator, as CEO. He chairs the Board of VTEL Middle East and Africa, serves on PADICO Holding’s Board and Executive Committee, and is a Trustee of An-Najah National University. He holds a B.S. in Accounting from Edinboro University of Pennsylvania and an M.Sc. in Accounting from Kent State University, Ohio.'
-      ),
-      imageUrl: 'assets/team/ammar-aker.jpg',
-      imageAlt: L('صورة عمّار عكر', 'Portrait of Ammar Aker')
-    },
-    {
       name: L('طلال رداد', 'Talal Raddad'),
-      role: L('الشريك المؤسس', 'Co-Founder'),
+      role: L('المؤسس والرئيس التنفيذي', 'Founder & Chief Executive Officer'),
       bio: L(
-        'طلال قائد تنفيذي في إدارة المنتجات بخبرة تتجاوز 10 سنوات في قيادة الاستراتيجية وإعادة تصميم المنتجات والإطلاقات العالمية عبر تطبيقات الموبايل ومنصات التواصل والتجارة الإلكترونية. يقود الرؤية والتنفيذ لتوسيع منتجات ليتشي وحلول التفاعل الرقمي.',
-        'Talal is an execution-oriented product management executive with 10+ years leading product strategy, redesign, and global launches across mobile apps, social platforms, and e-commerce. He drives vision and delivery for Lychee’s product and digital engagement solutions.'
+        'رائد أعمال فلسطيني في التكنولوجيا المالية والمنتجات الرقمية والذكاء الاصطناعي، بخبرة تتجاوز خمسة عشر عامًا في تأسيس الشركات وتطوير المنتجات. أسّس ليتشي عام 2022 لبناء حلول دفع رقمية تعزّز الشمول المالي، ويقود رؤيتها ونموّها. أسّس أيضًا شركات منها MaalChat وHooks Hub وTriggerTech، ويشغل رئاسة مجلس إدارة مؤسسة ريادي تك.',
+        'A Palestinian entrepreneur in fintech, digital products, and AI, with more than fifteen years founding companies and building products that combine innovation with real economic impact. He founded Lychee in 2022 to deliver digital payment solutions that expand financial inclusion, and leads its vision and growth. He has also founded ventures including MaalChat, Hooks Hub, and TriggerTech, and chairs the board of Riyadi Tech.'
       ),
       imageUrl: 'assets/team/talal-raddad.jpeg',
       imageAlt: L('صورة طلال رداد', 'Portrait of Talal Raddad')
+    },
+    {
+      name: L('عمّار عكر', 'Ammar Aker'),
+      role: L('رئيس مجلس الإدارة', 'Chairman of the Board'),
+      bio: L(
+        'شريك مؤسّس لليتشي ورئيس مجلس إدارتها. من أبرز القيادات الاقتصادية في فلسطين؛ شغل منصب الرئيس التنفيذي لمجموعة الاتصالات الفلسطينية (Paltel Group)، ويشغل حاليًا رئاسة مجلس إدارة هيئة سوق رأس المال الفلسطينية، ويتمتع بخبرة واسعة في قيادة المؤسسات الكبرى والاستثمار والتطوير المؤسسي.',
+        'Co-founder and Chairman of Lychee. One of Palestine’s leading economic executives; he previously served as CEO of Palestine Telecom Group (Paltel Group) and currently chairs the Palestine Capital Market Authority. He brings deep experience in leading major institutions, investment, and organizational development.'
+      ),
+      imageUrl: 'assets/team/ammar-aker.jpg',
+      imageAlt: L('صورة عمّار عكر', 'Portrait of Ammar Aker')
     }
   ];
 
@@ -126,8 +126,8 @@ export class AboutComponent implements OnInit, OnDestroy {
       {
         title: L('من نحن — ليتشي', 'About — Lychee'),
         description: L(
-          'تعرّف على قصة ليتشي ورسالتها وقيادتها — منصّة مدفوعات لفلسطين بثقة سلطة النقد وشركاء البنوك.',
-          'Learn Lychee’s story, mission, and leadership — a payments platform for Palestine, with PMA oversight and bank partners.'
+          'تعرّف على قصة ليتشي — أسّسها طلال رداد عام 2022 مع رئيس مجلس الإدارة عمّار العكر — منصّة مدفوعات فلسطينية للشمول المالي.',
+          'Learn Lychee’s story — founded in 2022 by Talal Raddad with Chairman Ammar Aker — a Palestinian payments platform for financial inclusion.'
         ),
         path: '/about'
       },

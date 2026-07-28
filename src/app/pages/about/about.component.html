@@ -19,24 +19,28 @@
   <section class="about-section about-story" aria-labelledby="about-story-title">
     <div class="about-section-head">
       <span class="eyebrow">{{ locale === 'ar' ? 'قصتنا' : 'Our story' }}</span>
-      <h2 id="about-story-title">{{ locale === 'ar' ? 'من الحاجة المحلية إلى منصّة يومية.' : 'From local need to a daily platform.' }}</h2>
+      <h2 id="about-story-title">{{ locale === 'ar' ? 'من رؤية فلسطينية إلى منصّة مدفوعات.' : 'From a Palestinian vision to a payments platform.' }}</h2>
     </div>
     <div class="about-story-grid">
       <div class="about-story-copy">
         <p *ngIf="locale === 'en'">
-          Palestine’s payments reality is unique: prepaid vouchers, chat-based commerce, taxis and markets that still run on cash, and institutions that need reliable digital rails. Lychee was built to meet that reality — not to transplant a foreign fintech playbook.
+          In 2022, Talal Raddad founded Lychee in partnership with Ammar Aker, Chairman of the Board, to build a leading Palestinian fintech company — digital payment solutions that expand financial inclusion and connect people, merchants, and institutions to modern financial services.
         </p>
         <p *ngIf="locale === 'en'">
-          We started by connecting the ways people already spend and get paid — OnePay vouchers, WhatsApp Pay, PayTag, and services from taxis to clinics — into one trusted app for consumers and one toolkit for merchants.
+          Lychee focuses on sectors and communities underserved by traditional banking — vouchers, WhatsApp Pay, PayTag, and everyday services from taxis to clinics — into one trusted consumer app and one merchant toolkit.
         </p>
         <p *ngIf="locale === 'ar'">
-          واقع المدفوعات في فلسطين فريد: القسائم المدفوعة مسبقًا، والتجارة عبر المحادثة، والتاكسي والأسواق التي ما زالت تعتمد النقد، والمؤسسات التي تحتاج مسارات رقمية موثوقة. بُنيت ليتشي لهذا الواقع — لا لنسخ دليل تقنية مالية مستورد.
+          في عام 2022، أسّس طلال رداد شركة ليتشي بالشراكة مع رجل الأعمال عمّار العكر، رئيس مجلس إدارة الشركة، بهدف بناء شركة فلسطينية رائدة في التكنولوجيا المالية تقدّم حلولًا رقمية تعزّز الشمول المالي وتربط الأفراد والتجّار والمؤسسات بالقطاع المالي.
         </p>
         <p *ngIf="locale === 'ar'">
-          بدأنا بربط طرق الإنفاق والتحصيل القائمة — قسائم OnePay وواتساب باي وPayTag وخدمات من التاكسي إلى العيادات — في تطبيق واحد موثوق للأفراد وأدوات واحدة للتجّار.
+          تركّز ليتشي على الفئات والقطاعات التي لا تستفيد بالكامل من الخدمات المصرفية التقليدية — القسائم وواتساب باي وPayTag والخدمات اليومية من التاكسي إلى العيادات — في تطبيق موثوق للأفراد وأدوات واحدة للتجّار.
         </p>
       </div>
       <aside class="about-story-aside" [attr.aria-label]="locale === 'ar' ? 'محاور التركيز' : 'Focus areas'">
+        <div class="about-aside-item">
+          <span class="about-aside-label">{{ locale === 'ar' ? 'التأسيس' : 'Founded' }}</span>
+          <strong>2022</strong>
+        </div>
         <div class="about-aside-item">
           <span class="about-aside-label">{{ locale === 'ar' ? 'السوق' : 'Market' }}</span>
           <strong>{{ locale === 'ar' ? 'فلسطين' : 'Palestine' }}</strong>
@@ -44,10 +48,6 @@
         <div class="about-aside-item">
           <span class="about-aside-label">{{ locale === 'ar' ? 'التركيز' : 'Focus' }}</span>
           <strong>{{ locale === 'ar' ? 'مدفوعات يومية' : 'Everyday payments' }}</strong>
-        </div>
-        <div class="about-aside-item">
-          <span class="about-aside-label">{{ locale === 'ar' ? 'اللغة' : 'Language' }}</span>
-          <strong>{{ locale === 'ar' ? 'عربية وإنجليزية' : 'Arabic & English' }}</strong>
         </div>
       </aside>
     </div>
