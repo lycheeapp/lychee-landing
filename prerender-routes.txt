@@ -1,0 +1,9 @@
+/
+/about
+/security
+/careers
+/faq
+/cookies
+/privacy
+/terms
+/404

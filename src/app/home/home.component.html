@@ -1,3 +1,14 @@
+<a class="skip-link" href="#main-content">{{ locale === 'ar' ? 'تخطّ إلى المحتوى' : 'Skip to content' }}</a>
+
+<div class="landing-skeleton" *ngIf="isLoading || !content" aria-busy="true">
+  <div class="skel-nav"></div>
+  <div class="wrap skel-hero">
+    <div class="skel-block skel-title"></div>
+    <div class="skel-block skel-lead"></div>
+    <div class="skel-block skel-phone"></div>
+  </div>
+</div>
+
 <div class="lychee-landing" *ngIf="content && !isLoading">
   <!-- ICON SPRITE -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -24,28 +35,17 @@
     </defs>
   </svg>
 
-  <header class="nav">
-    <div class="wrap nav-in">
-      <a class="brand" href="#" aria-label="Lychee home">
-        <img class="logo-full" [src]="content.nav.logoFullUrl" alt="Lychee" />
-        <img class="logo-mark" [src]="content.nav.logoMarkUrl" alt="Lychee" />
-      </a>
-      <nav class="nav-links">
-        <a *ngFor="let link of content.nav.links" [href]="link.href">{{ t(link.label) }}</a>
-      </nav>
-      <div class="nav-right">
-        <button class="lang-btn" type="button" (click)="toggleLocale()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><use href="#i-globe"/></svg>
-          <span>{{ t(content.langSwitch) }}</span>
-        </button>
-        <a class="btn btn-primary btn-sm" [href]="content.nav.cta.href">
-          <span class="nav-cta-text">{{ t(content.nav.cta.label) }}</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" style="width:16px;height:16px"><use href="#i-arrow"/></svg>
-        </a>
-      </div>
-    </div>
-  </header>
+  <app-site-header
+    [logoFullUrl]="content.nav.logoFullUrl"
+    [logoMarkUrl]="content.nav.logoMarkUrl"
+    [links]="content.nav.links"
+    [cta]="content.nav.cta"
+    [langLabel]="content.langSwitch"
+    [locale]="locale"
+    (langToggle)="toggleLocale()">
+  </app-site-header>
 
+  <main id="main-content" tabindex="-1">
   <section class="hero">
     <div class="wrap hero-in">
       <div class="hero-copy">
@@ -53,28 +53,122 @@
         <h1 class="h1">{{ t(content.hero.title) }}</h1>
         <p class="lead">{{ t(content.hero.subtitle) }}</p>
         <div class="hero-ctas">
-          <a class="btn btn-primary" [href]="content.hero.ctaConsumer.href">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><use href="#i-arrow"/></svg>
+          <a class="btn btn-primary" [routerLink]="'/'" [fragment]="'closer'">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><use href="#i-arrow"/></svg>
             <span>{{ t(content.hero.ctaConsumer.label) }}</span>
           </a>
-          <a class="btn btn-outline" [href]="content.hero.ctaMerchant.href">
+          <button type="button" class="btn btn-outline" (click)="openWhatsappLead('start_payments')">
             <span>{{ t(content.hero.ctaMerchant.label) }}</span>
-          </a>
+          </button>
         </div>
         <div class="trust">
           <div class="trust-label">{{ t(content.hero.trustLabel) }}</div>
           <div class="trust-row">
-            <img *ngFor="let logo of content.hero.trustLogos" class="trust-img" [src]="logo.url" [alt]="t(logo.alt)" />
+            <img *ngFor="let logo of content.hero.trustLogos" class="trust-img" [src]="logo.url" [alt]="t(logo.alt)" width="120" height="30" loading="lazy" />
           </div>
         </div>
       </div>
       <div class="hero-visual">
-        <div class="phone">
-          <div class="phone-screen">
-            <div class="island"></div>
-            <img class="app-shot" [src]="phoneShot()" [alt]="t(content.hero.phoneScreenshotAlt)" />
+        <div class="hero-stage">
+          <aside class="bop-card" [attr.aria-label]="t(content.hero.partnership.kicker) + ' ' + t(content.hero.partnership.name)">
+            <div class="bop-card-mark">
+              <img
+                [src]="content.hero.partnership.markUrl"
+                [alt]="t(content.hero.partnership.markAlt)"
+                width="20"
+                height="122"
+                loading="eager" />
+            </div>
+            <div class="bop-card-copy">
+              <span class="bop-card-kicker">{{ t(content.hero.partnership.kicker) }}</span>
+              <strong class="bop-card-name">{{ t(content.hero.partnership.name) }}</strong>
+            </div>
+          </aside>
+
+          <div class="hero-products">
+            <div class="hero-taxi-wrap">
+              <img
+                class="hero-pin"
+                [src]="content.hero.taxiPinUrl"
+                [alt]="t(content.hero.taxiPinAlt)"
+                width="78"
+                height="110"
+                loading="eager" />
+              <img
+                class="hero-taxi"
+                [src]="content.hero.taxiImageUrl"
+                [alt]="t(content.hero.taxiImageAlt)"
+                width="435"
+                height="225"
+                fetchpriority="high" />
+            </div>
+            <div class="phone hero-phone">
+              <div class="phone-screen">
+                <div class="island"></div>
+                <img
+                  class="app-shot"
+                  [src]="phoneShot()"
+                  [alt]="t(content.hero.phoneScreenshotAlt)"
+                  width="300"
+                  height="650"
+                  fetchpriority="high" />
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-pedestal" aria-hidden="true">
+            <svg width="900" height="260" viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <defs>
+                <radialGradient id="heroGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#8AE6B2" stop-opacity="0.5"/>
+                  <stop offset="60%" stop-color="#CFF5DF" stop-opacity="0.25"/>
+                  <stop offset="100%" stop-color="#CFF5DF" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="heroTopFace" x1="0%" y1="0%" x2="100%" y2="20%">
+                  <stop offset="0%" stop-color="#FFFFFF"/>
+                  <stop offset="55%" stop-color="#F3F7F4"/>
+                  <stop offset="100%" stop-color="#D8F5E4"/>
+                </linearGradient>
+                <linearGradient id="heroRim" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#E0E5E2"/>
+                  <stop offset="55%" stop-color="#CEDAD3"/>
+                  <stop offset="100%" stop-color="#BCEAD1"/>
+                </linearGradient>
+                <linearGradient id="heroSheen" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+                  <stop offset="35%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+                  <stop offset="65%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+                  <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+                </linearGradient>
+                <filter id="heroBlur" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="18"/>
+                </filter>
+              </defs>
+              <ellipse cx="450" cy="165" rx="420" ry="80" fill="url(#heroGlow)" filter="url(#heroBlur)"/>
+              <ellipse cx="450" cy="140" rx="400" ry="62" fill="url(#heroRim)"/>
+              <ellipse cx="450" cy="130" rx="400" ry="58" fill="url(#heroTopFace)"/>
+              <path d="M 90 118 A 360 46 0 0 1 810 118" fill="none" stroke="url(#heroSheen)" stroke-width="3" stroke-linecap="round"/>
+              <ellipse cx="450" cy="132" rx="230" ry="22" fill="#B5E2C7" opacity="0.4" filter="url(#heroBlur)"/>
+            </svg>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad" id="how-it-works">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="eyebrow">{{ t(content.howItWorks.eyebrow) }}</span>
+        <h2 class="h-sec">{{ t(content.howItWorks.title) }}</h2>
+        <p class="sub-sec">{{ t(content.howItWorks.subtitle) }}</p>
+      </div>
+      <div class="steps-row">
+        <article class="step" *ngFor="let step of content.howItWorks.steps">
+          <div class="step-num">{{ step.number }}</div>
+          <h3>{{ t(step.title) }}</h3>
+          <p>{{ t(step.body) }}</p>
+        </article>
       </div>
     </div>
   </section>
@@ -112,11 +206,11 @@
             <h3>{{ t(content.consumer.paytag.title) }}</h3>
             <p>{{ t(content.consumer.paytag.body) }}</p>
             <span class="chip" *ngIf="content.consumer.paytag.chip">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><use href="#i-check"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" aria-hidden="true"><use href="#i-check"/></svg>
               <span>{{ t(content.consumer.paytag.chip) }}</span>
             </span>
             <div class="paytag-vis" *ngIf="content.consumer.paytag.imageUrl">
-              <img [src]="content.consumer.paytag.imageUrl" alt="PayTag" />
+              <img [src]="content.consumer.paytag.imageUrl" alt="PayTag" width="280" height="240" loading="lazy" />
             </div>
           </div>
         </article>
@@ -124,16 +218,16 @@
       <div class="tiles-row">
         <div class="tile" *ngFor="let tile of content.consumer.tiles">
           <div class="tile-ic">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><use [attr.href]="'#i-' + tile.icon"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" aria-hidden="true"><use [attr.href]="'#i-' + tile.icon"/></svg>
           </div>
           <h4>{{ t(tile.title) }}</h4>
           <p>{{ t(tile.description) }}</p>
         </div>
       </div>
       <div class="row-cta">
-        <a class="btn btn-primary" [href]="content.consumer.cta.href">
+        <a class="btn btn-primary" [routerLink]="'/'" [fragment]="'closer'">
           <span>{{ t(content.consumer.cta.label) }}</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><use href="#i-arrow"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><use href="#i-arrow"/></svg>
         </a>
       </div>
     </div>
@@ -155,7 +249,7 @@
             <div class="plink">
               <div class="plink-card">
                 <div class="plink-url">
-                  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><use href="#i-link"/></svg>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" aria-hidden="true"><use href="#i-link"/></svg>
                   <span>{{ content.merchant.paymentLinks.demoUrl }}</span>
                 </div>
                 <div class="plink-amt-l" *ngIf="content.merchant.paymentLinks.amountLabel">{{ t(content.merchant.paymentLinks.amountLabel) }}</div>
@@ -165,7 +259,7 @@
                 <div class="methods-l">{{ t(content.merchant.paymentLinks.methodsLabel) }}</div>
                 <div class="method-chips">
                   <span class="mchip" *ngFor="let m of content.merchant.paymentLinks.methods; let i = index">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><use [attr.href]="i === 0 ? '#i-voucher' : '#i-card'"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" aria-hidden="true"><use [attr.href]="i === 0 ? '#i-voucher' : '#i-card'"/></svg>
                     <span>{{ t(m) }}</span>
                   </span>
                 </div>
@@ -181,7 +275,7 @@
             <div class="chat" *ngIf="content.merchant.whatsappPay.imageUrl">
               <div class="wa-shot-frame">
                 <div class="island sm"></div>
-                <img class="wa-shot" [src]="content.merchant.whatsappPay.imageUrl" [alt]="t(content.merchant.whatsappPay.imageAlt)" />
+                <img class="wa-shot" [src]="content.merchant.whatsappPay.imageUrl" [alt]="t(content.merchant.whatsappPay.imageAlt)" width="148" height="255" loading="lazy" />
               </div>
             </div>
           </div>
@@ -190,27 +284,27 @@
       <div class="mtiles">
         <div class="mtile" *ngFor="let tile of content.merchant.tiles">
           <div class="mtile-ic">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><use [attr.href]="'#i-' + tile.icon"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" aria-hidden="true"><use [attr.href]="'#i-' + tile.icon"/></svg>
           </div>
           <h4>{{ t(tile.title) }}</h4>
           <p>{{ t(tile.description) }}</p>
         </div>
       </div>
       <div class="clinic-banner">
-        <div class="cb-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><use href="#i-clinic"/></svg></div>
+        <div class="cb-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" aria-hidden="true"><use href="#i-clinic"/></svg></div>
         <div>
           <h3>{{ t(content.merchant.clinic.title) }}</h3>
           <p>{{ t(content.merchant.clinic.body) }}</p>
         </div>
-        <a class="btn btn-ghost-light cb-cta" [href]="content.merchant.clinic.cta.href">
+        <button type="button" class="btn btn-ghost-light cb-cta" (click)="openWhatsappLead('clinic')">
           <span>{{ t(content.merchant.clinic.cta.label) }}</span>
-        </a>
+        </button>
       </div>
       <div class="mer-cta-wrap">
-        <a class="btn btn-primary" [href]="content.merchant.cta.href">
+        <button type="button" class="btn btn-primary" (click)="openWhatsappLead('create_account')">
           <span>{{ t(content.merchant.cta.label) }}</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><use href="#i-arrow"/></svg>
-        </a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </button>
       </div>
     </div>
   </section>
@@ -221,9 +315,9 @@
         <span class="eyebrow">{{ t(content.developers.eyebrow) }}</span>
         <h2>{{ t(content.developers.title) }}</h2>
         <p>{{ t(content.developers.body) }}</p>
-        <a class="btn btn-primary dev-cta" [href]="content.developers.cta.href">
+        <a class="btn btn-primary dev-cta" [href]="content.developers.cta.href" target="_blank" rel="noopener noreferrer">
           <span>{{ t(content.developers.cta.label) }}</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><use href="#i-arrow"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><use href="#i-arrow"/></svg>
         </a>
       </div>
       <div class="code-win">
@@ -232,6 +326,27 @@
           <span class="code-cap">{{ t(content.developers.codeCaption) }}</span>
         </div>
         <pre class="code">{{ content.developers.codeSample }}</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad bg-off" id="faq-teaser">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="eyebrow">{{ t(content.faqTeaser.eyebrow) }}</span>
+        <h2 class="h-sec">{{ t(content.faqTeaser.title) }}</h2>
+      </div>
+      <div class="faq-teaser-grid">
+        <article class="faq-card" *ngFor="let item of content.faqTeaser.items">
+          <h3>{{ t(item.question) }}</h3>
+          <p>{{ t(item.answer) }}</p>
+        </article>
+      </div>
+      <div class="row-cta">
+        <a class="btn btn-outline" routerLink="/faq">
+          <span>{{ t(content.faqTeaser.cta.label) }}</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -246,9 +361,9 @@
         </div>
         <div class="ch-list">
           <ng-container *ngFor="let ch of content.contact.channels">
-            <a *ngIf="ch.href" class="ch-item" [href]="ch.href" [attr.target]="ch.type === 'whatsapp' ? '_blank' : null">
+            <a *ngIf="ch.href" class="ch-item" [href]="ch.href" [attr.target]="ch.type === 'whatsapp' ? '_blank' : null" [attr.rel]="ch.type === 'whatsapp' ? 'noopener noreferrer' : null">
               <span class="ch-ic">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><use [attr.href]="'#i-' + channelIcon(ch.type)"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" aria-hidden="true"><use [attr.href]="'#i-' + channelIcon(ch.type)"/></svg>
               </span>
               <span class="ch-tx">
                 <span class="ch-t">{{ t(ch.label) }}</span>
@@ -257,7 +372,7 @@
             </a>
             <div *ngIf="!ch.href" class="ch-item" style="cursor:default">
               <span class="ch-ic">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><use [attr.href]="'#i-' + channelIcon(ch.type)"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" aria-hidden="true"><use [attr.href]="'#i-' + channelIcon(ch.type)"/></svg>
               </span>
               <span class="ch-tx">
                 <span class="ch-t">{{ t(ch.label) }}</span>
@@ -267,34 +382,7 @@
           </ng-container>
         </div>
       </div>
-      <form class="contact-form" (submit)="onContactSubmit($event)">
-        <div class="field-row">
-          <div class="field">
-            <label for="cf-name">{{ t(content.contact.form.nameLabel) }}</label>
-            <input id="cf-name" type="text" autocomplete="name" />
-          </div>
-          <div class="field">
-            <label for="cf-email">{{ t(content.contact.form.emailLabel) }}</label>
-            <input id="cf-email" type="email" autocomplete="email" dir="ltr" />
-          </div>
-        </div>
-        <div class="field">
-          <label for="cf-topic">{{ t(content.contact.form.topicLabel) }}</label>
-          <input id="cf-topic" type="text" />
-        </div>
-        <div class="field">
-          <label for="cf-msg">{{ t(content.contact.form.messageLabel) }}</label>
-          <textarea id="cf-msg"></textarea>
-        </div>
-        <button class="btn btn-primary btn-block" type="submit">
-          <span>{{ t(content.contact.form.sendLabel) }}</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><use href="#i-send"/></svg>
-        </button>
-        <div class="form-note">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><use href="#i-lock"/></svg>
-          <span>{{ t(content.contact.form.privacyNote) }}</span>
-        </div>
-      </form>
+      <app-contact-form [labels]="content.contact.form" [locale]="locale"></app-contact-form>
     </div>
   </section>
 
@@ -304,54 +392,52 @@
       <p class="sub-sec">{{ t(content.closer.body) }}</p>
       <div class="eco-row">
         <span class="eco" *ngFor="let icon of content.closer.ecoIcons">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><use [attr.href]="'#i-' + icon"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" aria-hidden="true"><use [attr.href]="'#i-' + icon"/></svg>
         </span>
       </div>
       <div class="store-badges">
-        <a class="store-badge" [href]="content.closer.appStore.href" aria-label="App Store">
-          <svg viewBox="0 0 24 24"><path d="M16.4 12.9c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.8-3.5.8-.7 0-1.9-.8-3.1-.8-1.6 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2-.05 1.6-.75 3-.75s1.8.75 3 .73c1.2-.02 2-1.1 2.8-2.2.9-1.3 1.2-2.5 1.3-2.6-.03-.01-2.4-.9-2.4-3.6ZM14.2 6.3c.65-.8 1.1-1.9.98-3-1 .04-2.1.66-2.8 1.45-.6.7-1.14 1.8-1 2.9 1.1.08 2.2-.55 2.82-1.35Z"/></svg>
+        <a class="store-badge" [href]="content.closer.appStore.href" target="_blank" rel="noopener noreferrer" aria-label="App Store">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.9c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.8-3.5.8-.7 0-1.9-.8-3.1-.8-1.6 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2-.05 1.6-.75 3-.75s1.8.75 3 .73c1.2-.02 2-1.1 2.8-2.2.9-1.3 1.2-2.5 1.3-2.6-.03-.01-2.4-.9-2.4-3.6ZM14.2 6.3c.65-.8 1.1-1.9.98-3-1 .04-2.1.66-2.8 1.45-.6.7-1.14 1.8-1 2.9 1.1.08 2.2-.55 2.82-1.35Z"/></svg>
           <span class="sb-t"><small>{{ t(content.closer.appStore.top) }}</small><b>{{ t(content.closer.appStore.bottom) }}</b></span>
         </a>
-        <a class="store-badge" [href]="content.closer.playStore.href" aria-label="Google Play">
-          <svg viewBox="0 0 24 24"><path d="M4.2 3.3c-.3.28-.45.7-.45 1.25v14.9c0 .55.16.97.47 1.24l.08.07 8.35-8.35v-.2L4.28 3.24l-.08.06Zm11.1 8.4L12.5 8.9l.02-.02 3.05 3.05-.27-.23Zm0 .6.27-.23L20 15.06c.85.48.85 1.28 0 1.77l-4.32 2.45-.36-.36 2.78-2.78-2.78-2.5.36-.34Zm-2.8-.3-8.06 8.06 8.06-4.58v-3.48Zm0-1.2V6.85L4.44 2.3l8.06 8.5Z"/></svg>
+        <a class="store-badge" [href]="content.closer.playStore.href" target="_blank" rel="noopener noreferrer" aria-label="Google Play">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.2 3.3c-.3.28-.45.7-.45 1.25v14.9c0 .55.16.97.47 1.24l.08.07 8.35-8.35v-.2L4.28 3.24l-.08.06Zm11.1 8.4L12.5 8.9l.02-.02 3.05 3.05-.27-.23Zm0 .6.27-.23L20 15.06c.85.48.85 1.28 0 1.77l-4.32 2.45-.36-.36 2.78-2.78-2.78-2.5.36-.34Zm-2.8-.3-8.06 8.06 8.06-4.58v-3.48Zm0-1.2V6.85L4.44 2.3l8.06 8.5Z"/></svg>
           <span class="sb-t"><small>{{ t(content.closer.playStore.top) }}</small><b>{{ t(content.closer.playStore.bottom) }}</b></span>
         </a>
       </div>
       <div class="closer-ctas">
-        <a class="btn btn-primary" [href]="content.closer.ctaConsumer.href">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><use href="#i-arrow"/></svg>
+        <a class="btn btn-primary" [href]="content.closer.ctaConsumer.href" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><use href="#i-arrow"/></svg>
           <span>{{ t(content.closer.ctaConsumer.label) }}</span>
         </a>
-        <a class="btn btn-outline" [href]="content.closer.ctaMerchant.href">
+        <button type="button" class="btn btn-outline" (click)="openWhatsappLead('start_payments')">
           <span>{{ t(content.closer.ctaMerchant.label) }}</span>
-        </a>
+        </button>
       </div>
     </div>
   </section>
+  </main>
 
-  <footer class="footer">
-    <div class="wrap">
-      <div class="foot-top">
-        <div class="foot-brand">
-          <img [src]="content.footer.logoLightUrl" alt="Lychee" />
-          <p>{{ t(content.footer.tagline) }}</p>
-        </div>
-        <div class="foot-col" *ngFor="let col of content.footer.columns">
-          <h5>{{ t(col.title) }}</h5>
-          <ng-container *ngFor="let link of col.links">
-            <a *ngIf="isAppRoute(link.href)" [routerLink]="link.href">{{ t(link.label) }}</a>
-            <a *ngIf="!isAppRoute(link.href)" [href]="link.href">{{ t(link.label) }}</a>
-          </ng-container>
-        </div>
-      </div>
-      <div class="foot-bottom">
-        <span class="cr">{{ t(content.footer.copyright) }}</span>
-        <button class="foot-lang" type="button" (click)="toggleLocale()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><use href="#i-globe"/></svg>
-          <span>{{ t(content.langSwitch) }}</span>
-        </button>
-        <span class="made">{{ t(content.footer.madeIn) }}</span>
-      </div>
-    </div>
-  </footer>
+  <app-site-footer
+    [logoLightUrl]="content.footer.logoLightUrl"
+    [tagline]="content.footer.tagline"
+    [columns]="content.footer.columns"
+    [copyright]="content.footer.copyright"
+    [madeIn]="content.footer.madeIn"
+    [langLabel]="content.langSwitch"
+    [locale]="locale"
+    (langToggle)="toggleLocale()">
+  </app-site-footer>
+
+  <app-sticky-whatsapp [href]="whatsappHref()" [locale]="locale"></app-sticky-whatsapp>
+  <app-whatsapp-lead-modal
+    [open]="waLeadOpen"
+    [locale]="locale"
+    [phone]="whatsappPhone()"
+    [title]="waLeadTitle()"
+    [helper]="waLeadHelper()"
+    [initialMessage]="waLeadMessage()"
+    (closed)="closeWhatsappLead()">
+  </app-whatsapp-lead-modal>
+  <app-cookie-banner [locale]="locale"></app-cookie-banner>
 </div>

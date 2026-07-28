@@ -1,0 +1,143 @@
+<app-legal-page-shell
+  [locale]="locale"
+  [wide]="true"
+  activePath="/about"
+  (langToggle)="toggleLocale()">
+
+  <header class="about-hero">
+    <div class="about-hero-copy">
+      <p class="about-brand">Lychee</p>
+      <h1>{{ locale === 'ar' ? 'نُبسّط المال اليومي لفلسطين.' : 'We make everyday money simple for Palestine.' }}</h1>
+      <p class="about-lead">
+        {{ locale === 'ar'
+          ? 'ليتشي منصّة مدفوعات وتقنية مبنية — للدفع، والتحصيل، وتحريك الأموال بثقة.'
+          : 'Lychee is a payments and technology platform built for the West Bank — to pay, get paid, and move money with confidence.' }}
+      </p>
+    </div>
+  </header>
+
+  <section class="about-section about-story" aria-labelledby="about-story-title">
+    <div class="about-section-head">
+      <span class="eyebrow">{{ locale === 'ar' ? 'قصتنا' : 'Our story' }}</span>
+      <h2 id="about-story-title">{{ locale === 'ar' ? 'من الحاجة المحلية إلى منصّة يومية.' : 'From local need to a daily platform.' }}</h2>
+    </div>
+    <div class="about-story-grid">
+      <div class="about-story-copy">
+        <p *ngIf="locale === 'en'">
+          Palestine’s payments reality is unique: prepaid vouchers, chat-based commerce, taxis and markets that still run on cash, and institutions that need reliable digital rails. Lychee was built to meet that reality — not to transplant a foreign fintech playbook.
+        </p>
+        <p *ngIf="locale === 'en'">
+          We started by connecting the ways people already spend and get paid — OnePay vouchers, WhatsApp Pay, PayTag, and services from taxis to clinics — into one trusted app for consumers and one toolkit for merchants.
+        </p>
+        <p *ngIf="locale === 'ar'">
+          واقع المدفوعات في فلسطين فريد: القسائم المدفوعة مسبقًا، والتجارة عبر المحادثة، والتاكسي والأسواق التي ما زالت تعتمد النقد، والمؤسسات التي تحتاج مسارات رقمية موثوقة. بُنيت ليتشي لهذا الواقع — لا لنسخ دليل تقنية مالية مستورد.
+        </p>
+        <p *ngIf="locale === 'ar'">
+          بدأنا بربط طرق الإنفاق والتحصيل القائمة — قسائم OnePay وواتساب باي وPayTag وخدمات من التاكسي إلى العيادات — في تطبيق واحد موثوق للأفراد وأدوات واحدة للتجّار.
+        </p>
+      </div>
+      <aside class="about-story-aside" [attr.aria-label]="locale === 'ar' ? 'محاور التركيز' : 'Focus areas'">
+        <div class="about-aside-item">
+          <span class="about-aside-label">{{ locale === 'ar' ? 'السوق' : 'Market' }}</span>
+          <strong>{{ locale === 'ar' ? 'فلسطين' : 'Palestine' }}</strong>
+        </div>
+        <div class="about-aside-item">
+          <span class="about-aside-label">{{ locale === 'ar' ? 'التركيز' : 'Focus' }}</span>
+          <strong>{{ locale === 'ar' ? 'مدفوعات يومية' : 'Everyday payments' }}</strong>
+        </div>
+        <div class="about-aside-item">
+          <span class="about-aside-label">{{ locale === 'ar' ? 'اللغة' : 'Language' }}</span>
+          <strong>{{ locale === 'ar' ? 'عربية وإنجليزية' : 'Arabic & English' }}</strong>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="about-section about-mission" aria-labelledby="about-mission-title">
+    <div class="about-section-head center">
+      <span class="eyebrow">{{ locale === 'ar' ? 'الرسالة' : 'Mission' }}</span>
+      <h2 id="about-mission-title">
+        {{ locale === 'ar'
+          ? 'جعل المدفوعات اليومية بسيطة ومحلية وموثوقة.'
+          : 'Make everyday payments simple, local, and trustworthy.' }}
+      </h2>
+      <p class="about-section-sub">
+        {{ locale === 'ar'
+          ? 'تطبيق واحد للأفراد. أدوات واحدة للتجّار. واجهات برمجة نظيفة للمطوّرين.'
+          : 'One app for consumers. One toolkit for merchants. Clean APIs for developers.' }}
+      </p>
+    </div>
+    <div class="about-pillars">
+      <article class="about-pillar" *ngFor="let pillar of pillars">
+        <h3>{{ t(pillar.title) }}</h3>
+        <p>{{ t(pillar.body) }}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="about-section about-leadership" aria-labelledby="about-leadership-title">
+    <div class="about-section-head">
+      <span class="eyebrow">{{ locale === 'ar' ? 'القيادة' : 'Leadership' }}</span>
+      <h2 id="about-leadership-title">{{ locale === 'ar' ? 'من يقود ليتشي.' : 'Who leads Lychee.' }}</h2>
+    </div>
+
+    <div class="leadership-grid">
+      <article class="leader-card" *ngFor="let leader of leadership">
+        <div class="leader-photo">
+          <img
+            [src]="leader.imageUrl"
+            [alt]="t(leader.imageAlt)"
+            width="320"
+            height="320"
+            loading="lazy" />
+        </div>
+        <div class="leader-copy">
+          <p class="leader-role">{{ t(leader.role) }}</p>
+          <h3>{{ t(leader.name) }}</h3>
+          <p class="leader-bio">{{ t(leader.bio) }}</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="about-section about-trust" aria-labelledby="about-trust-title">
+    <div class="about-section-head center">
+      <span class="eyebrow">{{ locale === 'ar' ? 'الثقة' : 'Trust' }}</span>
+      <h2 id="about-trust-title">
+        {{ locale === 'ar' ? 'شركاء وتنظيم يهمّون.' : 'Partners and oversight that matter.' }}
+      </h2>
+      <p class="about-section-sub">
+        {{ locale === 'ar'
+          ? 'نعمل ضمن إطار تنظيمي وشراكات مؤسسية تدعم الثقة في كل دفعة.'
+          : 'We operate with institutional partners and regulatory oversight that reinforce trust in every payment.' }}
+      </p>
+    </div>
+    <ul class="about-trust-logos">
+      <li *ngFor="let logo of trustLogos">
+        <img
+          [src]="logo.url"
+          [alt]="t(logo.alt)"
+          width="140"
+          height="40"
+          loading="lazy" />
+      </li>
+    </ul>
+    <p class="about-trust-note">
+      {{ locale === 'ar' ? 'اعرف المزيد في' : 'Learn more on our' }}
+      <a routerLink="/security">{{ locale === 'ar' ? 'صفحة الأمان' : 'Security page' }}</a>.
+    </p>
+  </section>
+
+  <section class="about-cta" aria-labelledby="about-cta-title">
+    <h2 id="about-cta-title">{{ locale === 'ar' ? 'ابنِ معنا.' : 'Build with us.' }}</h2>
+    <p>
+      {{ locale === 'ar'
+        ? 'فرص للانضمام إلى الفريق، أو تواصل مباشر مع ليتشي.'
+        : 'Open roles on the team, or reach Lychee directly.' }}
+    </p>
+    <div class="about-cta-actions">
+      <a class="btn btn-primary" routerLink="/careers">{{ locale === 'ar' ? 'الوظائف' : 'Careers' }}</a>
+      <a class="btn btn-outline" routerLink="/" fragment="contact">{{ locale === 'ar' ? 'تواصل معنا' : 'Contact' }}</a>
+    </div>
+  </section>
+</app-legal-page-shell>

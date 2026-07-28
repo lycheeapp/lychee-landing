@@ -1,0 +1,285 @@
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: saturate(180%) blur(16px);
+  border-bottom: 1px solid var(--line-soft, #eef0f2);
+}
+
+.site-nav .wrap {
+  max-width: var(--maxw, 1200px);
+  margin-inline: auto;
+  padding-inline: var(--gutter, clamp(20px, 5vw, 64px));
+}
+
+.nav-in {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 68px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-inline-end: auto;
+  color: inherit;
+  text-decoration: none;
+}
+
+.brand img.logo-full {
+  height: 26px;
+  width: auto;
+  display: block;
+}
+
+.brand img.logo-mark {
+  height: 30px;
+  width: auto;
+  display: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-links a {
+  padding: 9px 14px;
+  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #3a3f4a;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.nav-links a:hover,
+.nav-links a.is-active {
+  background: var(--off2, #f6f5f2);
+  color: var(--ink, #0e121b);
+}
+
+.nav-links a.is-active {
+  background: rgba(30, 205, 100, 0.12);
+  color: var(--green-ink, #12a851);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  border: 1px solid var(--line, #e8e8ea);
+  border-radius: 100px;
+  padding: 9px 15px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--ink, #0e121b);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.lang-btn:hover {
+  border-color: var(--ink, #0e121b);
+  background: var(--off2, #f6f5f2);
+}
+
+.lang-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.nav-cta svg {
+  width: 16px;
+  height: 16px;
+}
+
+.menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line, #e8e8ea);
+  border-radius: 12px;
+  background: #fff;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.menu-bar,
+.menu-bar::before,
+.menu-bar::after {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--ink, #0e121b);
+  border-radius: 2px;
+  position: relative;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.menu-bar::before,
+.menu-bar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+}
+
+.menu-bar::before {
+  top: -6px;
+}
+
+.menu-bar::after {
+  top: 6px;
+}
+
+.menu-bar.open {
+  background: transparent;
+}
+
+.menu-bar.open::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.menu-bar.open::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+.mobile-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(14, 18, 27, 0.45);
+  z-index: 70;
+}
+
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  inset-inline-end: 0;
+  width: min(360px, 92vw);
+  height: 100%;
+  background: #fff;
+  z-index: 80;
+  padding: 88px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  box-shadow: -12px 0 40px rgba(6, 38, 18, 0.12);
+  /* Only mounted when open (*ngIf); still hide on desktop as a safeguard */
+  animation: drawer-in 0.25s ease;
+}
+
+@keyframes drawer-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+:host-context([dir='rtl']) .mobile-drawer {
+  animation-name: drawer-in-rtl;
+}
+
+@keyframes drawer-in-rtl {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Never show mobile drawer chrome on desktop / tablet */
+@media (min-width: 641px) {
+  .mobile-backdrop,
+  .mobile-drawer {
+    display: none !important;
+  }
+}
+
+.mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mobile-links a {
+  display: block;
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink, #0e121b);
+  text-decoration: none;
+}
+
+.mobile-links a:hover,
+.mobile-links a:focus-visible {
+  background: var(--off2, #f6f5f2);
+}
+
+.mobile-actions {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.site-nav.legal-variant .nav-in {
+  max-width: 960px;
+  margin-inline: auto;
+}
+
+@media (max-width: 640px) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav-cta .nav-cta-text {
+    display: none;
+  }
+
+  .brand img.logo-full {
+    display: none;
+  }
+
+  .brand img.logo-mark {
+    display: block;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  .nav-right .lang-btn {
+    display: none;
+  }
+}

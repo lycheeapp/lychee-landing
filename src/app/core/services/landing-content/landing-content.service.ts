@@ -4,6 +4,7 @@ import { delay } from 'rxjs/operators';
 
 import { LandingContent } from '../../models/landing-page.model';
 import { LANDING_CONTENT_DEFAULTS } from './landing-content.defaults';
+import { environment } from '../../../../environments/environment';
 
 const STORAGE_KEY = 'lychee_landing_content_v1';
 
@@ -13,12 +14,16 @@ const STORAGE_KEY = 'lychee_landing_content_v1';
 export class LandingContentService {
 
   getContent(): Observable<LandingContent> {
-    const stored = this.readStorage();
-    const content = stored ? this.mergeDeep(this.cloneDefaults(), stored) : this.cloneDefaults();
+    const content = (!environment.production && this.readStorage())
+      ? this.mergeDeep(this.cloneDefaults(), this.readStorage()!)
+      : this.cloneDefaults();
     return of(content).pipe(delay(0));
   }
 
   updateContent(content: LandingContent): Observable<LandingContent> {
+    if (environment.production) {
+      return of(this.clone(content)).pipe(delay(0));
+    }
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(content));
     } catch (e) {
@@ -37,6 +42,9 @@ export class LandingContentService {
   }
 
   private readStorage(): LandingContent | null {
+    if (environment.production) {
+      return null;
+    }
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) {

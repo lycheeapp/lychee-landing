@@ -66,9 +66,22 @@ export interface LandingFooterColumn {
   links: LandingFooterLink[];
 }
 
+export interface LandingHowItWorksStep {
+  number: string;
+  title: LocalizedString;
+  body: LocalizedString;
+}
+
+export interface LandingFaqItem {
+  question: LocalizedString;
+  answer: LocalizedString;
+}
+
 export interface LandingContent {
   seo: {
     title: LocalizedString;
+    description: LocalizedString;
+    ogImage: string;
   };
   langSwitch: LocalizedString;
   nav: {
@@ -88,6 +101,28 @@ export interface LandingContent {
     phoneScreenshotAr: string;
     phoneScreenshotEn: string;
     phoneScreenshotAlt: LocalizedString;
+    taxiImageUrl: string;
+    taxiImageAlt: LocalizedString;
+    taxiPinUrl: string;
+    taxiPinAlt: LocalizedString;
+    partnership: {
+      kicker: LocalizedString;
+      name: LocalizedString;
+      markUrl: string;
+      markAlt: LocalizedString;
+    };
+  };
+  howItWorks: {
+    eyebrow: LocalizedString;
+    title: LocalizedString;
+    subtitle: LocalizedString;
+    steps: LandingHowItWorksStep[];
+  };
+  faqTeaser: {
+    eyebrow: LocalizedString;
+    title: LocalizedString;
+    items: LandingFaqItem[];
+    cta: LandingCta;
   };
   consumer: {
     eyebrow: LocalizedString;
@@ -131,7 +166,15 @@ export interface LandingContent {
       topicLabel: LocalizedString;
       messageLabel: LocalizedString;
       sendLabel: LocalizedString;
+      sendingLabel: LocalizedString;
       privacyNote: LocalizedString;
+      consentLabel: LocalizedString;
+      consentLinkLabel: LocalizedString;
+      successMessage: LocalizedString;
+      errorMessage: LocalizedString;
+      rateLimitMessage: LocalizedString;
+      requiredError: LocalizedString;
+      emailError: LocalizedString;
     };
   };
   closer: {

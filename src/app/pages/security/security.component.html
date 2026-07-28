@@ -1,0 +1,46 @@
+<app-legal-page-shell
+  [locale]="locale"
+  activePath="/security"
+  (langToggle)="toggleLocale()">
+  <div class="legal-hero">
+    <span class="eyebrow">{{ locale === 'ar' ? 'الثقة' : 'Trust' }}</span>
+    <h1>{{ locale === 'ar' ? 'الأمان على ليتشي' : 'Security at Lychee' }}</h1>
+    <p class="meta">{{ locale === 'ar' ? 'حماية بياناتك ومدفوعاتك أولوية دائمة' : 'Protecting your data and payments is non-negotiable' }}</p>
+  </div>
+
+  <article class="legal-body" *ngIf="locale === 'en'">
+    <p>Lychee is a payments facilitator, not a bank. We take security seriously because people trust us with everyday money — vouchers, cards, and merchant settlements.</p>
+    <h2>Encryption &amp; transport</h2>
+    <p>Traffic to our services uses TLS. Sensitive credentials and session tokens are handled with industry-standard practices; we never ask for your password over email or WhatsApp.</p>
+    <h2>Payment partners</h2>
+    <p>Card processing is handled through trusted partners including CyberSource. Settlement and banking relationships include Bank of Palestine. Card data is not stored on Lychee servers beyond what partners require for authorized processing.</p>
+    <h2>Regulatory oversight</h2>
+    <p>We operate under the framework of the Palestine Monetary Authority and apply KYC/AML controls where required for account opening and higher-risk flows.</p>
+    <h2>Account safety</h2>
+    <ul>
+      <li>Keep your phone and app lock enabled.</li>
+      <li>Never share OTPs or voucher codes with anyone claiming to be support.</li>
+      <li>Report suspicious activity immediately at <a href="mailto:info@lycheeapp.org">info&#64;lycheeapp.org</a>.</li>
+    </ul>
+    <h2>Privacy</h2>
+    <p>How we collect and use personal data is described in our <a routerLink="/privacy">Privacy Policy</a>.</p>
+  </article>
+
+  <article class="legal-body" *ngIf="locale === 'ar'">
+    <p>ليتشي ميسّر مدفوعات وليس بنكًا. نأخذ الأمان على محمل الجد لأن الناس يأتمنوننا على أموالهم اليومية — القسائم والبطاقات وتسويات التجّار.</p>
+    <h2>التشفير والنقل</h2>
+    <p>الاتصال بخدماتنا يتم عبر TLS. نتعامل مع بيانات الدخول ورمز الجلسة وفق ممارسات قياسية؛ ولن نطلب كلمة مرورك عبر البريد أو واتساب.</p>
+    <h2>شركاء الدفع</h2>
+    <p>معالجة البطاقات تتم عبر شركاء موثوقين منهم CyberSource. علاقات التسوية والبنوك تشمل بنك فلسطين. ولا تُخزَّن بيانات البطاقة على خوادم ليتشي بما يتجاوز ما يطلبه الشركاء للمعالجة المصرّح بها.</p>
+    <h2>الإطار التنظيمي</h2>
+    <p>نعمل في إطار سلطة النقد الفلسطينية ونطبّق ضوابط اعرف عميلك ومكافحة غسل الأموال حيث يلزم لفتح الحسابات والتدفقات الأعلى مخاطر.</p>
+    <h2>سلامة الحساب</h2>
+    <ul>
+      <li>فعّل قفل الهاتف والتطبيق.</li>
+      <li>لا تشارك رموز OTP أو أكواد القسائم مع من يدّعي أنه الدعم.</li>
+      <li>أبلغ فورًا عن أي نشاط مشبوه عبر <a href="mailto:info@lycheeapp.org">info&#64;lycheeapp.org</a>.</li>
+    </ul>
+    <h2>الخصوصية</h2>
+    <p>كيفية جمعنا واستخدامنا للبيانات الشخصية موضّحة في <a routerLink="/privacy">سياسة الخصوصية</a>.</p>
+  </article>
+</app-legal-page-shell>

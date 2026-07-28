@@ -2,37 +2,46 @@ import {
   LandingContent,
   L
 } from '../../models/landing-page.model';
+import { environment } from '../../../../environments/environment';
 
 const ASSET = 'assets/landing';
 
 export const LANDING_CONTENT_DEFAULTS: LandingContent = {
   seo: {
-    title: L('ليتشي — تطبيق واحد للدفع والتحصيل', 'Lychee — One app for paying and getting paid')
+    title: L('ليتشي — تطبيق واحد للدفع والتحصيل', 'Lychee — One app for paying and getting paid'),
+    description: L(
+      'ليتشي هي مجموعة من قنوات الدفع مصمّمة لفلسطين — أرسِل، وادفع، واستلم الدفعات بكل ثقة، من هاتفك.',
+      'Lychee is a payments platform built for Palestine — send, spend, and get paid with confidence, right from your phone.'
+    ),
+    ogImage: ASSET + '/og-image.png'
   },
   langSwitch: L('English', 'العربية'),
   nav: {
     logoFullUrl: ASSET + '/lychee-logo.svg',
     logoMarkUrl: ASSET + '/lychee-mark.svg',
     links: [
-      { label: L('الأفراد', 'Personal'), href: '#consumer' },
-      { label: L('الأعمال', 'Business'), href: '#merchant' },
-      { label: L('المطوّرون', 'Developers'), href: '#developers' },
-      { label: L('تواصل معنا', 'Contact'), href: '#contact' }
+      { label: L('الأفراد', 'Personal'), href: '/#consumer' },
+      { label: L('الأعمال', 'Business'), href: '/#merchant' },
+      { label: L('المطوّرون', 'Developers'), href: '/#developers' },
+      { label: L('تواصل معنا', 'Contact'), href: '/#contact' }
     ],
-    cta: { label: L('حمّل ليتشي', 'Get Lychee'), href: '#closer' }
+    cta: { label: L('حمّل ليتشي', 'Get Lychee'), href: '/#closer' }
   },
   hero: {
-    eyebrow: L('البوابة الفلسطينية', 'The Palestinian payment gateway'),
+    eyebrow: L('مدفوعات لفلسطين', 'Payments for Palestine'),
     title: L(
       'تطبيقٌ واحد للدفع، والتحصيل، وكلّ ما بينهما.',
       'One app for paying, getting paid, and everything in between.'
     ),
     subtitle: L(
-      'ليتشي هي بوابة الدفع المصمّمة لفلسطين والضفة الغربية — أرسِل، وادفع، واستلم الدفعات بكل ثقة، من هاتفك.',
-      'Lychee is the payment gateway built for Palestine and the West Bank — send, spend, and get paid with confidence, right from your phone.'
+      'ليتشي هي مجموعة من قنوات الدفع مصمّمة لفلسطين — أرسِل، وادفع، واستلم الدفعات بكل ثقة، من هاتفك.',
+      'Lychee is a payments platform built for Palestine — send, spend, and get paid with confidence, right from your phone.'
     ),
-    ctaConsumer: { label: L('حمّل التطبيق', 'Download the app'), href: '#closer' },
-    ctaMerchant: { label: L('ابدأ بقبول المدفوعات', 'Start accepting payments'), href: '#merchant' },
+    ctaConsumer: { label: L('حمّل التطبيق', 'Download the app'), href: '/#closer' },
+    ctaMerchant: {
+      label: L('ابدأ بقبول المدفوعات', 'Start accepting payments'),
+      href: '#whatsapp-lead:start_payments'
+    },
     trustLabel: L('موثوق ومؤمَّن من', 'Trusted & secured by'),
     trustLogos: [
       { url: ASSET + '/pma-logo.png', alt: L('سلطة النقد الفلسطينية', 'Palestine Monetary Authority') },
@@ -44,11 +53,74 @@ export const LANDING_CONTENT_DEFAULTS: LandingContent = {
     phoneScreenshotAlt: L(
       'شاشة تطبيق ليتشي الرئيسية — الرصيد والقسائم والخدمات',
       'Lychee app home screen — balance, vouchers and services'
-    )
+    ),
+    taxiImageUrl: ASSET + '/hero-taxi.png',
+    taxiImageAlt: L('سيارة أجرة ليتشي الصفراء', 'Lychee yellow taxi'),
+    taxiPinUrl: ASSET + '/hero-taxi-pin.png',
+    taxiPinAlt: L('دبوس موقع سيارة أجرة', 'Taxi location pin'),
+    partnership: {
+      kicker: L('بالشراكة مع', 'In Partnership with'),
+      name: L('بنك فلسطين', 'Bank of Palestine'),
+      markUrl: ASSET + '/bop-card-mark.png',
+      markAlt: L('شعار بنك فلسطين', 'Bank of Palestine logo')
+    }
+  },
+  howItWorks: {
+    eyebrow: L('كيف يعمل', 'How it works'),
+    title: L('ثلاث خطوات. ثم أنت جاهز.', 'Three steps. Then you are set.'),
+    subtitle: L(
+      'من التحميل إلى أول عملية دفع — في دقائق.',
+      'From download to your first payment — in minutes.'
+    ),
+    steps: [
+      {
+        number: '01',
+        title: L('حمّل التطبيق', 'Download the app'),
+        body: L('من App Store أو Google Play وافتح حسابك خلال دقائق.', 'From the App Store or Google Play — open your account in minutes.')
+      },
+      {
+        number: '02',
+        title: L('أنشئ قسيمة', 'Load a voucher'),
+        body: L('أنشئ ون‑باي أو اشحن رصيدك بالطريقة التي تناسبك.', 'Create a OnePay voucher or top up however works for you.')
+      },
+      {
+        number: '03',
+        title: L('ادفع في كل مكان', 'Pay anywhere'),
+        body: L('في التاكسي، السوق، الملاعب، العيادات — وكل ما بينهما.', 'At taxis, markets, courts, clinics — and everything in between.')
+      }
+    ]
+  },
+  faqTeaser: {
+    eyebrow: L('أسئلة شائعة', 'FAQ'),
+    title: L('إجابات سريعة قبل أن تبدأ.', 'Quick answers before you start.'),
+    items: [
+      {
+        question: L('هل ليتشي بنك؟', 'Is Lychee a bank?'),
+        answer: L(
+          'لا. ليتشي منصّة تقنية ومدفوعات — وليست بنكًا. الأرصدة والقسائم ليست ودائع مصرفية.',
+          'No. Lychee is a technology and payments platform — not a bank. Balances and vouchers are not bank deposits.'
+        )
+      },
+      {
+        question: L('كيف أبدأ كتاجر؟', 'How do I start as a merchant?'),
+        answer: L(
+          'أنشئ حساب تاجر عبر بوابة المتجر، ثم فعّل روابط الدفع أو واتساب باي خلال دقائق.',
+          'Create a merchant account via the store portal, then enable payment links or WhatsApp Pay in minutes.'
+        )
+      },
+      {
+        question: L('هل بياناتي آمنة؟', 'Is my data safe?'),
+        answer: L(
+          'نعم. نعتمد تشفيرًا وشراكات موثوقة (منها CyberSource وبنك فلسطين) ونخضع لإطار سلطة النقد.',
+          'Yes. We use encryption and trusted partners (including CyberSource and Bank of Palestine) under PMA oversight.'
+        )
+      }
+    ],
+    cta: { label: L('عرض كل الأسئلة', 'See all FAQs'), href: '/faq' }
   },
   consumer: {
     eyebrow: L('لك أنت', 'For you'),
-    title: L('يومك كلّه، في بوابةٍ واحدة.', 'Your whole day, one payment gateway.'),
+    title: L('يومك كلّه، في تطبيقٍ واحد.', 'Your whole day, one payments app.'),
     subtitle: L(
       'من قهوة الصباح إلى حجز الملعب مساءً — كل شيء يبدأ من ليتشي.',
       'From the morning coffee to booking a court at night — it all starts in Lychee.'
@@ -80,7 +152,7 @@ export const LANDING_CONTENT_DEFAULTS: LandingContent = {
       { icon: 'villa', title: L('فلل', 'Villas'), description: L('احجز فِللاً في أنحاء الضفة', 'Book villas across the West Bank') },
       { icon: 'clinic', title: L('عيادات', 'Clinics'), description: L('احجز وادفع زيارات العيادة', 'Book & pay for clinic visits') }
     ],
-    cta: { label: L('اكتشف التطبيق', 'Explore the app'), href: '#closer' }
+    cta: { label: L('اكتشف التطبيق', 'Explore the app'), href: '/#closer' }
   },
   merchant: {
     eyebrow: L('لعملك', 'For your business'),
@@ -145,9 +217,12 @@ export const LANDING_CONTENT_DEFAULTS: LandingContent = {
         'حجوزات، ومدفوعات داخل التطبيق، وتذكيرات ذكية — في مكانٍ واحد.',
         'Bookings, in-app payments, and smart reminders — all in one place.'
       ),
-      cta: { label: L('اعرف المزيد', 'Learn more'), href: '#closer' }
+      cta: { label: L('اعرف المزيد', 'Learn more'), href: '#whatsapp-lead:clinic' }
     },
-    cta: { label: L('أنشئ حساب تاجر', 'Create a merchant account'), href: '#closer' }
+    cta: {
+      label: L('أنشئ حساب تاجر', 'Create a merchant account'),
+      href: '#whatsapp-lead:create_account'
+    }
   },
   developers: {
     eyebrow: L('المطوّرون', 'Developers'),
@@ -159,7 +234,7 @@ export const LANDING_CONTENT_DEFAULTS: LandingContent = {
       'حزمة تطوير نظيفة وواجهة REST، مع القسائم والبطاقات وويب‑هوكس جاهزة من الصندوق.',
       'A clean SDK and REST API, with vouchers, cards, and webhooks out of the box.'
     ),
-    cta: { label: L('اقرأ الوثائق', 'Read the docs'), href: '#' },
+    cta: { label: L('اقرأ الوثائق', 'Read the docs'), href: environment.docsUrl },
     codeCaption: L('قبول دفعة بقسيمة ليتشي', 'Accepting a Lychee voucher payment'),
     codeSample:
       "import { Lychee } from '@lychee/sdk'\n\n" +
@@ -184,20 +259,20 @@ export const LANDING_CONTENT_DEFAULTS: LandingContent = {
       {
         type: 'email',
         label: L('البريد الإلكتروني', 'Email'),
-        value: L('hello@lychee.ps', 'hello@lychee.ps'),
-        href: 'mailto:hello@lychee.ps'
+        value: L(environment.contactEmail, environment.contactEmail),
+        href: 'mailto:' + environment.contactEmail
       },
       {
         type: 'phone',
         label: L('الهاتف', 'Phone'),
-        value: L('+970 2 200 0000', '+970 2 200 0000'),
-        href: 'tel:+970022000000'
+        value: L('+970 598 999 890', '+970 598 999 890'),
+        href: 'tel:+970598999890'
       },
       {
         type: 'whatsapp',
         label: L('واتساب', 'WhatsApp'),
         value: L('دعم مباشر عبر المحادثة', 'Live support over chat'),
-        href: 'https://wa.me/970599000000'
+        href: 'https://wa.me/970598999890'
       },
       {
         type: 'hq',
@@ -212,10 +287,27 @@ export const LANDING_CONTENT_DEFAULTS: LandingContent = {
       topicLabel: L('الموضوع', 'Topic'),
       messageLabel: L('رسالتك', 'Your message'),
       sendLabel: L('أرسِل الرسالة', 'Send message'),
+      sendingLabel: L('جارٍ الإرسال…', 'Sending…'),
       privacyNote: L(
         'بياناتك محميّة ولن تُشارك مع أي طرف ثالث.',
         'Your details are protected and never shared with third parties.'
-      )
+      ),
+      consentLabel: L('أوافق على معالجة بياناتي وفق', 'I agree to the processing of my data under the'),
+      consentLinkLabel: L('سياسة الخصوصية', 'Privacy Policy'),
+      successMessage: L(
+        'شكرًا لك. استلمنا رسالتك وسنعود إليك خلال يوم عمل واحد.',
+        "Thank you. We've received your message and will get back within one business day."
+      ),
+      errorMessage: L(
+        'تعذّر إرسال الرسالة. حاول مرة أخرى أو راسلنا مباشرة عبر البريد.',
+        'Could not send your message. Please try again or email us directly.'
+      ),
+      rateLimitMessage: L(
+        'أرسلتَ عددًا كبيرًا من الرسائل. حاول لاحقًا.',
+        'Too many messages sent. Please try again later.'
+      ),
+      requiredError: L('هذا الحقل مطلوب', 'This field is required'),
+      emailError: L('أدخل بريدًا إلكترونيًا صالحًا', 'Enter a valid email address')
     }
   },
   closer: {
@@ -228,34 +320,41 @@ export const LANDING_CONTENT_DEFAULTS: LandingContent = {
     appStore: {
       top: L('حمّله من', 'Download on the'),
       bottom: L('App Store', 'App Store'),
-      href: '#'
+      href: environment.appStoreUrl
     },
     playStore: {
       top: L('احصل عليه من', 'Get it on'),
       bottom: L('Google Play', 'Google Play'),
-      href: '#'
+      href: environment.playStoreUrl
     },
-    ctaConsumer: { label: L('حمّل التطبيق', 'Download the app'), href: '#' },
-    ctaMerchant: { label: L('ابدأ بقبول المدفوعات', 'Start accepting payments'), href: '#merchant' }
+    ctaConsumer: {
+      label: L('حمّل التطبيق', 'Download the app'),
+      href: environment.appStoreUrl
+    },
+    ctaMerchant: {
+      label: L('ابدأ بقبول المدفوعات', 'Start accepting payments'),
+      href: '#whatsapp-lead:start_payments'
+    }
   },
   footer: {
     logoLightUrl: ASSET + '/lychee-logo-light.svg',
-    tagline: L('البوابة الفلسطينية للدفع اليومي.', 'The Palestinian payment gateway for everyday money.'),
+    tagline: L('غيرنا مستقبل الدفع', 'We Changed the Future of Payments.'),
     columns: [
       {
         title: L('المنتج', 'Product'),
         links: [
-          { label: L('للأفراد', 'Personal'), href: '#consumer' },
-          { label: L('للأعمال', 'Business'), href: '#merchant' },
-          { label: L('للمطوّرون', 'Developers'), href: '#developers' }
+          { label: L('للأفراد', 'Personal'), href: '/#consumer' },
+          { label: L('للأعمال', 'Business'), href: '/#merchant' },
+          { label: L('للمطوّرون', 'Developers'), href: '/#developers' },
+          { label: L('الأسئلة الشائعة', 'FAQ'), href: '/faq' }
         ]
       },
       {
         title: L('الشركة', 'Company'),
         links: [
-          { label: L('من نحن', 'About'), href: '#' },
-          { label: L('الوظائف', 'Careers'), href: '#' },
-          { label: L('تواصل معنا', 'Contact'), href: '#contact' }
+          { label: L('من نحن', 'About'), href: '/about' },
+          { label: L('الوظائف', 'Careers'), href: '/careers' },
+          { label: L('تواصل معنا', 'Contact'), href: '/#contact' }
         ]
       },
       {
@@ -263,7 +362,8 @@ export const LANDING_CONTENT_DEFAULTS: LandingContent = {
         links: [
           { label: L('الشروط', 'Terms'), href: '/terms' },
           { label: L('الخصوصية', 'Privacy'), href: '/privacy' },
-          { label: L('الأمان', 'Security'), href: '#' }
+          { label: L('الأمان', 'Security'), href: '/security' },
+          { label: L('ملفات تعريف الارتباط', 'Cookies'), href: '/cookies' }
         ]
       }
     ],
