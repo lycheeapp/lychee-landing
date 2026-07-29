@@ -1,0 +1,56 @@
+<div
+  class="wa-lead-backdrop"
+  *ngIf="open"
+  (click)="onBackdropClick($event)"
+  role="presentation">
+  <div
+    #dialogPanel
+    class="wa-lead-dialog"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-labelledby]="'wa-lead-title'"
+    [attr.aria-describedby]="'wa-lead-helper'"
+    (click)="$event.stopPropagation()">
+    <button
+      type="button"
+      class="wa-lead-close"
+      (click)="close()"
+      [attr.aria-label]="locale === 'ar' ? 'إغلاق' : 'Close'">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+    <h2 id="wa-lead-title" class="wa-lead-title">{{ title }}</h2>
+    <p id="wa-lead-helper" class="wa-lead-helper">{{ helper }}</p>
+
+    <form class="wa-lead-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="wa-lead-field">
+        <label for="wa-lead-message">
+          {{ locale === 'ar' ? 'رسالتك' : 'Your message' }}
+        </label>
+        <textarea
+          #messageField
+          id="wa-lead-message"
+          formControlName="message"
+          rows="6"
+          maxlength="1000"
+          [attr.aria-invalid]="messageInvalid"
+          [attr.aria-describedby]="messageInvalid ? 'wa-lead-error' : null"></textarea>
+        <p class="wa-lead-error" id="wa-lead-error" *ngIf="messageInvalid">
+          {{ locale === 'ar' ? 'الرجاء كتابة رسالة قبل المتابعة.' : 'Please enter a message before continuing.' }}
+        </p>
+      </div>
+
+      <div class="wa-lead-actions">
+        <button type="button" class="btn btn-outline" (click)="close()">
+          {{ locale === 'ar' ? 'إلغاء' : 'Cancel' }}
+        </button>
+        <button type="submit" class="btn btn-primary wa-lead-submit">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm0 1.82c4.46 0 8.09 3.63 8.09 8.09 0 4.46-3.63 8.09-8.09 8.09-1.42 0-2.8-.37-4.02-1.07l-.29-.17-3.12.82.83-3.04-.19-.31a8.05 8.05 0 0 1-1.21-4.32c0-4.46 3.63-8.09 8.09-8.09z"/>
+          </svg>
+          <span>{{ locale === 'ar' ? 'المتابعة عبر واتساب' : 'Continue on WhatsApp' }}</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

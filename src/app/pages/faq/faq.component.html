@@ -1,0 +1,30 @@
+<app-legal-page-shell
+  [locale]="locale"
+  activePath="/faq"
+  (langToggle)="toggleLocale()">
+  <div class="legal-hero">
+    <span class="eyebrow">{{ locale === 'ar' ? 'المساعدة' : 'Help' }}</span>
+    <h1>{{ locale === 'ar' ? 'الأسئلة الشائعة' : 'Frequently asked questions' }}</h1>
+    <p class="meta">{{ locale === 'ar' ? 'إجابات سريعة عن المنتج والأمان والدعم' : 'Quick answers about product, security, and support' }}</p>
+  </div>
+
+  <div class="faq-list legal-body">
+    <div class="faq-item" *ngFor="let item of items">
+      <button type="button" class="faq-q" (click)="toggle(item)" [attr.aria-expanded]="!!item.open">
+        <span>{{ t(item.q) }}</span>
+        <span class="faq-icon" aria-hidden="true">{{ item.open ? '−' : '+' }}</span>
+      </button>
+      <div class="faq-a" *ngIf="item.open">
+        <p>{{ t(item.a) }}</p>
+      </div>
+    </div>
+    <p class="faq-more">
+      <ng-container *ngIf="locale === 'ar'; else enMore">
+        لم تجد إجابتك؟ <a routerLink="/" fragment="contact">تواصل معنا</a>.
+      </ng-container>
+      <ng-template #enMore>
+        Still stuck? <a routerLink="/" fragment="contact">Contact us</a>.
+      </ng-template>
+    </p>
+  </div>
+</app-legal-page-shell>

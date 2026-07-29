@@ -1,60 +1,51 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-
-export type LegalLocale = 'ar' | 'en';
-
-const LANG_KEY = 'lychee_lang';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { LegalPageShellComponent } from '../shared/legal-page-shell/legal-page-shell.component';
+import { LocaleService, LandingLocale } from '../core/services/locale/locale.service';
+import { SeoService } from '../core/services/seo/seo.service';
+import { L } from '../core/models/landing-page.model';
 
 @Component({
   selector: 'app-privacy-policy',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, LegalPageShellComponent],
   templateUrl: './privacy-policy.component.html',
   styleUrl: './legal-page.scss',
   encapsulation: ViewEncapsulation.None
 })
 export class PrivacyPolicyComponent implements OnInit, OnDestroy {
-  locale: LegalLocale = 'ar';
+  locale: LandingLocale = 'ar';
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private localeService: LocaleService,
+    private seo: SeoService
+  ) {}
 
-  ngOnInit() {
-    this.locale = this.resolveInitialLocale();
-    this.applyLocale(this.locale);
+  ngOnInit(): void {
+    this.locale = this.localeService.resolveInitial(this.route);
+    this.applySeo();
   }
 
-  ngOnDestroy() {
-    document.documentElement.removeAttribute('dir');
+  ngOnDestroy(): void {
+    this.seo.clearJsonLd();
   }
 
-  toggleLocale() {
-    this.locale = this.locale === 'ar' ? 'en' : 'ar';
-    this.applyLocale(this.locale);
-    try {
-      localStorage.setItem(LANG_KEY, this.locale);
-    } catch (e) {}
+  toggleLocale(): void {
+    this.locale = this.localeService.toggle(this.router);
+    this.applySeo();
   }
 
-  private resolveInitialLocale(): LegalLocale {
-    const q = this.route.snapshot.queryParamMap.get('lang');
-    if (q === 'ar' || q === 'en') {
-      return q;
-    }
-    try {
-      const stored = localStorage.getItem(LANG_KEY);
-      if (stored === 'ar' || stored === 'en') {
-        return stored;
-      }
-    } catch (e) {}
-    return 'ar';
-  }
-
-  private applyLocale(locale: LegalLocale) {
-    document.documentElement.lang = locale;
-    document.documentElement.dir = locale === 'ar' ? 'rtl' : 'ltr';
-    document.title = locale === 'ar'
-      ? 'سياسة الخصوصية — ليتشي تِك'
-      : 'Privacy Policy — Lychee Tech';
+  private applySeo(): void {
+    this.seo.apply({
+      title: L('سياسة الخصوصية — ليتشي تِك', 'Privacy Policy — Lychee Tech'),
+      description: L(
+        'كيف تجمع ليتشي بياناتك الشخصية وتستخدمها وتحميها.',
+        'How Lychee collects, uses, and protects your personal information.'
+      ),
+      path: '/privacy'
+    }, this.locale);
   }
 }

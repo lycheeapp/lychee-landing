@@ -1,0 +1,29 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img [src]="logoLightUrl" alt="Lychee" width="120" height="26" />
+        <p>{{ t(tagline) }}</p>
+      </div>
+      <div class="foot-col" *ngFor="let col of columns">
+        <h5>{{ t(col.title) }}</h5>
+        <ng-container *ngFor="let link of col.links">
+          <a *ngIf="isAppRoute(link.href)" [routerLink]="link.href">{{ t(link.label) }}</a>
+          <a *ngIf="isFragment(link.href)" [routerLink]="'/'" [fragment]="fragmentOf(link.href)">{{ t(link.label) }}</a>
+          <a *ngIf="isExternal(link.href)" [href]="link.href" target="_blank" rel="noopener noreferrer">{{ t(link.label) }}</a>
+        </ng-container>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="cr">{{ t(copyright) }}</span>
+      <button class="foot-lang" type="button" (click)="langToggle.emit()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+          <circle cx="12" cy="12" r="8.2"/>
+          <path d="M3.8 12h16.4M12 3.8c2.3 2.2 3.4 5.1 3.4 8.2S14.3 18 12 20.2C9.7 18 8.6 15.1 8.6 12S9.7 6 12 3.8Z"/>
+        </svg>
+        <span>{{ t(langLabel) }}</span>
+      </button>
+      <span class="made">{{ t(madeIn) }}</span>
+    </div>
+  </div>
+</footer>

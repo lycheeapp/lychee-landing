@@ -1,0 +1,144 @@
+.contact-form {
+  border: 1px solid var(--line, #e8e8ea);
+  border-radius: var(--r-card, 24px);
+  background: linear-gradient(180deg, #fff, var(--mint, #f4fdf7));
+  box-shadow: var(--shadow-card, 0 1px 2px rgba(6, 38, 18, 0.04), 0 12px 34px rgba(6, 38, 18, 0.06));
+  padding: clamp(26px, 3vw, 40px);
+}
+
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.field label {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--navy, #242c3c);
+}
+
+.field input,
+.field textarea {
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--ink, #0e121b);
+  background: #fff;
+  border: 1.5px solid var(--line, #e8e8ea);
+  border-radius: 12px;
+  padding: 13px 15px;
+  width: 100%;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.field textarea {
+  min-height: 118px;
+  line-height: 1.55;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--green, #1ecd64);
+  box-shadow: 0 0 0 4px rgba(30, 205, 100, 0.14);
+}
+
+.field input[aria-invalid='true'],
+.field textarea[aria-invalid='true'] {
+  border-color: #d14343;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.field-error {
+  font-size: 12.5px;
+  color: #d14343;
+  font-weight: 600;
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  color: var(--sec, #555);
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.consent input {
+  margin-top: 3px;
+  flex: none;
+}
+
+.consent a {
+  color: var(--green-ink, #12a851);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.consent.invalid {
+  color: #d14343;
+}
+
+.form-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 12.5px;
+  color: var(--muted, #8a8f98);
+}
+
+.form-note svg {
+  width: 15px;
+  height: 15px;
+  stroke: var(--green-ink, #12a851);
+  fill: none;
+  flex: none;
+}
+
+.form-success {
+  background: rgba(30, 205, 100, 0.12);
+  color: #0a6b36;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.form-error {
+  margin-top: 12px;
+  color: #d14343;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+button[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+@media (max-width: 640px) {
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+}

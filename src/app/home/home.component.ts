@@ -1,22 +1,41 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import {
   LandingContent,
-  LandingLocale,
   LocalizedString,
   resolveLocalized
 } from '../core/models/landing-page.model';
 import { LandingContentService } from '../core/services/landing-content/landing-content.service';
-
-const LANG_KEY = 'lychee_lang';
+import { LocaleService, LandingLocale } from '../core/services/locale/locale.service';
+import { SeoService } from '../core/services/seo/seo.service';
+import { SiteHeaderComponent } from '../shared/site-header/site-header.component';
+import { SiteFooterComponent } from '../shared/site-footer/site-footer.component';
+import { ContactFormComponent } from '../shared/contact-form/contact-form.component';
+import { CookieBannerComponent } from '../shared/cookie-banner/cookie-banner.component';
+import { StickyWhatsappComponent } from '../shared/sticky-whatsapp/sticky-whatsapp.component';
+import { WhatsappLeadModalComponent } from '../shared/whatsapp-lead-modal/whatsapp-lead-modal.component';
+import {
+  WHATSAPP_LEAD_INTENTS,
+  WhatsappLeadIntentId
+} from '../shared/whatsapp-lead-modal/whatsapp-lead.intents';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    SiteHeaderComponent,
+    SiteFooterComponent,
+    ContactFormComponent,
+    CookieBannerComponent,
+    StickyWhatsappComponent,
+    WhatsappLeadModalComponent
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   encapsulation: ViewEncapsulation.None
@@ -25,25 +44,30 @@ export class HomeComponent implements OnInit, OnDestroy {
   content: LandingContent | null = null;
   locale: LandingLocale = 'ar';
   isLoading = true;
+  waLeadOpen = false;
+  waLeadIntent: WhatsappLeadIntentId = 'start_payments';
   private sub?: Subscription;
 
   constructor(
     private landingContent: LandingContentService,
-    private route: ActivatedRoute
+    private localeService: LocaleService,
+    private seo: SeoService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
-  ngOnInit() {
-    this.locale = this.resolveInitialLocale();
-    this.applyDocumentLocale(this.locale);
+  ngOnInit(): void {
+    this.locale = this.localeService.resolveInitial(this.route);
     this.sub = this.landingContent.getContent().subscribe((content) => {
       this.content = content;
       this.isLoading = false;
-      this.applyDocumentLocale(this.locale);
+      this.applySeo();
     });
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.sub?.unsubscribe();
+    this.seo.clearJsonLd();
   }
 
   t(value: LocalizedString | undefined | null): string {
@@ -59,23 +83,11 @@ export class HomeComponent implements OnInit, OnDestroy {
       : this.content.hero.phoneScreenshotAr;
   }
 
-  toggleLocale() {
+  toggleLocale(): void {
     const y = window.scrollY;
-    this.locale = this.locale === 'ar' ? 'en' : 'ar';
-    this.applyDocumentLocale(this.locale);
-    try {
-      localStorage.setItem(LANG_KEY, this.locale);
-    } catch (e) {}
-    try {
-      const url = new URL(window.location.href);
-      url.searchParams.set('lang', this.locale);
-      window.history.replaceState({}, '', url.toString());
-    } catch (e) {}
+    this.locale = this.localeService.toggle(this.router);
+    this.applySeo();
     setTimeout(() => window.scrollTo(0, y), 0);
-  }
-
-  onContactSubmit(event: Event) {
-    event.preventDefault();
   }
 
   channelIcon(type: string): string {
@@ -85,32 +97,100 @@ export class HomeComponent implements OnInit, OnDestroy {
     return 'pin';
   }
 
+  isExternal(href: string): boolean {
+    return !!href && (href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:'));
+  }
+
   isAppRoute(href: string): boolean {
-    if (!href) {
-      return false;
-    }
-    return href.charAt(0) === '/' && href.indexOf('#') === -1;
+    return !!href && href.charAt(0) === '/' && href.indexOf('#') === -1;
   }
 
-  private resolveInitialLocale(): LandingLocale {
-    const q = this.route.snapshot.queryParamMap.get('lang');
-    if (q === 'ar' || q === 'en') {
-      return q;
+  isFragment(href: string): boolean {
+    return !!href && (href.startsWith('#') || href.includes('/#'));
+  }
+
+  fragmentOf(href: string): string {
+    const i = href.indexOf('#');
+    return i >= 0 ? href.slice(i + 1) : '';
+  }
+
+  whatsappHref(): string {
+    const ch = this.content?.contact.channels.find((c) => c.type === 'whatsapp');
+    return ch?.href || '';
+  }
+
+  whatsappPhone(): string {
+    const href = this.whatsappHref();
+    const match = href.match(/wa\.me\/(\d+)/);
+    return match?.[1] || '970598999890';
+  }
+
+  openWhatsappLead(intent: WhatsappLeadIntentId): void {
+    this.waLeadIntent = intent;
+    this.waLeadOpen = true;
+  }
+
+  closeWhatsappLead(): void {
+    this.waLeadOpen = false;
+  }
+
+  waLeadTitle(): string {
+    return this.t(WHATSAPP_LEAD_INTENTS[this.waLeadIntent].title);
+  }
+
+  waLeadHelper(): string {
+    return this.t(WHATSAPP_LEAD_INTENTS[this.waLeadIntent].helper);
+  }
+
+  waLeadMessage(): string {
+    return this.t(WHATSAPP_LEAD_INTENTS[this.waLeadIntent].message);
+  }
+
+  private applySeo(): void {
+    if (!this.content) {
+      return;
     }
-    try {
-      const stored = localStorage.getItem(LANG_KEY);
-      if (stored === 'ar' || stored === 'en') {
-        return stored;
+    this.seo.apply({
+      title: this.content.seo.title,
+      description: this.content.seo.description,
+      path: '/',
+      ogImage: this.content.seo.ogImage
+    }, this.locale);
+
+    this.seo.setJsonLd([
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'Lychee',
+        url: environment.siteUrl,
+        logo: `${environment.siteUrl}/assets/landing/lychee-logo.svg`,
+        email: environment.contactEmail,
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Ramallah',
+          addressRegion: 'West Bank',
+          addressCountry: 'PS'
+        },
+        contactPoint: {
+          '@type': 'ContactPoint',
+          contactType: 'customer support',
+          email: environment.contactEmail,
+          availableLanguage: ['Arabic', 'English']
+        }
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'MobileApplication',
+        name: 'Lychee',
+        operatingSystem: 'iOS, Android',
+        applicationCategory: 'FinanceApplication',
+        offers: {
+          '@type': 'Offer',
+          price: '0',
+          priceCurrency: 'ILS'
+        },
+        downloadUrl: [environment.appStoreUrl, environment.playStoreUrl]
       }
-    } catch (e) {}
-    return 'ar';
-  }
-
-  private applyDocumentLocale(locale: LandingLocale) {
-    document.documentElement.lang = locale;
-    document.documentElement.dir = locale === 'ar' ? 'rtl' : 'ltr';
-    if (this.content && this.content.seo) {
-      document.title = this.t(this.content.seo.title);
-    }
+    ]);
   }
 }

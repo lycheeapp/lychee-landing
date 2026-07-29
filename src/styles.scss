@@ -3,3 +3,59 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+:focus-visible {
+  outline: 3px solid rgba(30, 205, 100, 0.55);
+  outline-offset: 2px;
+}
+
+/* Shared buttons used by header/footer across pages */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 388px;
+  border: 1.5px solid transparent;
+  padding: 15px 28px;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+  text-align: center;
+  color: inherit;
+  background: transparent;
+}
+.btn svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+.btn-primary {
+  background: #1ecd64;
+  color: #053417;
+  box-shadow: 0 8px 20px rgba(30, 205, 100, 0.28);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(30, 205, 100, 0.36);
+}
+.btn-outline {
+  background: #fff;
+  color: #0e121b;
+  border-color: #e8e8ea;
+}
+.btn-outline:hover {
+  border-color: #0e121b;
+  transform: translateY(-2px);
+}
+.btn-sm {
+  padding: 11px 20px;
+  font-size: 14px;
+}
+.btn-block {
+  width: 100%;
+}

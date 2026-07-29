@@ -1,21 +1,9 @@
-<div class="legal-page">
-  <header class="legal-nav">
-    <div class="legal-nav-in">
-      <a class="brand" routerLink="/" aria-label="Lychee home">
-        <img src="assets/landing/lychee-logo.svg" alt="Lychee" />
-      </a>
-      <nav class="legal-nav-links">
-        <a routerLink="/">{{ locale === 'ar' ? 'الرئيسية' : 'Home' }}</a>
-        <a routerLink="/privacy">{{ locale === 'ar' ? 'سياسة الخصوصية' : 'Privacy Policy' }}</a>
-        <a routerLink="/terms" class="is-active">{{ locale === 'ar' ? 'الشروط والأحكام' : 'Terms & Conditions' }}</a>
-        <button type="button" class="lang-btn" (click)="toggleLocale()">
-          {{ locale === 'ar' ? 'English' : 'العربية' }}
-        </button>
-      </nav>
-    </div>
-  </header>
+<app-legal-page-shell
+  [locale]="locale"
+  activePath="/terms"
+  (langToggle)="toggleLocale()">
 
-  <main class="legal-wrap" *ngIf="locale === 'en'">
+<div class="legal-inner" *ngIf="locale === 'en'">
     <div class="legal-hero">
       <span class="eyebrow">Lychee Tech</span>
       <h1>Terms and Conditions</h1>
@@ -120,9 +108,9 @@
       <span>© 2026 Lychee Tech</span>
       <a routerLink="/privacy">View Privacy Policy →</a>
     </div>
-  </main>
+  </div>
 
-  <main class="legal-wrap" *ngIf="locale === 'ar'">
+  <div class="legal-inner" *ngIf="locale === 'ar'">
     <div class="legal-hero">
       <span class="eyebrow">Lychee Tech</span>
       <h1>شروط وأحكام Lychee Tech</h1>
@@ -240,5 +228,5 @@
       <span>© 2026 Lychee Tech</span>
       <a routerLink="/privacy">عرض سياسة الخصوصية ←</a>
     </div>
-  </main>
-</div>
+  </div>
+</app-legal-page-shell>

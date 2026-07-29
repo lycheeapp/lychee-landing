@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://lycheeapp.org/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://lycheeapp.org/?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lycheeapp.org/?lang=en"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://lycheeapp.org/about</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://lycheeapp.org/about?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lycheeapp.org/about?lang=en"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lycheeapp.org/security</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://lycheeapp.org/security?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lycheeapp.org/security?lang=en"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lycheeapp.org/careers</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://lycheeapp.org/careers?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lycheeapp.org/careers?lang=en"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lycheeapp.org/faq</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://lycheeapp.org/faq?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lycheeapp.org/faq?lang=en"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://lycheeapp.org/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://lycheeapp.org/privacy?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lycheeapp.org/privacy?lang=en"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://lycheeapp.org/terms</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://lycheeapp.org/terms?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lycheeapp.org/terms?lang=en"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://lycheeapp.org/cookies</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://lycheeapp.org/cookies?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lycheeapp.org/cookies?lang=en"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+</urlset>

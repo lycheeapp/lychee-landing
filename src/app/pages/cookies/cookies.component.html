@@ -1,0 +1,40 @@
+<app-legal-page-shell
+  [locale]="locale"
+  activePath="/cookies"
+  (langToggle)="toggleLocale()">
+  <div class="legal-hero">
+    <span class="eyebrow">{{ locale === 'ar' ? 'قانوني' : 'Legal' }}</span>
+    <h1>{{ locale === 'ar' ? 'سياسة ملفات تعريف الارتباط' : 'Cookie Policy' }}</h1>
+    <p class="meta">{{ locale === 'ar' ? 'ساري اعتبارًا من يوليو 2026' : 'Effective July 2026' }}</p>
+  </div>
+
+  <article class="legal-body" *ngIf="locale === 'en'">
+    <p>This Cookie Policy explains how Lychee Tech (“Lychee,” “we,” “us”) uses cookies and similar technologies on lycheeapp.org.</p>
+    <h2>What are cookies?</h2>
+    <p>Cookies are small text files stored on your device. They help sites remember preferences, keep sessions secure, and understand usage.</p>
+    <h2>Cookies we use</h2>
+    <ul>
+      <li><strong>Essential</strong> — language preference (<code>lychee_lang</code>), cookie consent choice, and security/session needs for the site to function.</li>
+      <li><strong>Optional analytics</strong> — only if you accept all cookies via the banner; used to understand aggregate traffic and improve the site.</li>
+    </ul>
+    <h2>Your choices</h2>
+    <p>You can accept all cookies or keep essential-only via our banner. You can also clear cookies in your browser settings at any time.</p>
+    <h2>More privacy information</h2>
+    <p>See our <a routerLink="/privacy">Privacy Policy</a> for how we handle personal data more broadly.</p>
+  </article>
+
+  <article class="legal-body" *ngIf="locale === 'ar'">
+    <p>توضّح سياسة ملفات تعريف الارتباط هذه كيف تستخدم ليتشي تِك («ليتشي»، «نحن») ملفات تعريف الارتباط والتقنيات المشابهة على lycheeapp.org.</p>
+    <h2>ما هي ملفات تعريف الارتباط؟</h2>
+    <p>هي ملفات نصية صغيرة تُخزَّن على جهازك. تساعد المواقع على تذكّر التفضيلات، وتأمين الجلسات، وفهم الاستخدام.</p>
+    <h2>ما نستخدمه</h2>
+    <ul>
+      <li><strong>ضرورية</strong> — تفضيل اللغة (<code>lychee_lang</code>)، اختيار الموافقة، واحتياجات الأمان/الجلسة ليعمل الموقع.</li>
+      <li><strong>تحليلات اختيارية</strong> — فقط إذا قبلتَ كل الملفات عبر الشريط؛ لفهم الزيارات الإجمالية وتحسين الموقع.</li>
+    </ul>
+    <h2>خياراتك</h2>
+    <p>يمكنك قبول الكل أو الاكتفاء بالضرورية عبر الشريط. يمكنك أيضًا مسح الملفات من إعدادات المتصفح في أي وقت.</p>
+    <h2>مزيد عن الخصوصية</h2>
+    <p>راجع <a routerLink="/privacy">سياسة الخصوصية</a> لمعرفة كيفية تعاملنا مع البيانات الشخصية بشكل أوسع.</p>
+  </article>
+</app-legal-page-shell>

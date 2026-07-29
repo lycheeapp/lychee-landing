@@ -1,0 +1,36 @@
+<app-legal-page-shell
+  [locale]="locale"
+  activePath="/careers"
+  (langToggle)="toggleLocale()">
+  <div class="legal-hero">
+    <span class="eyebrow">{{ locale === 'ar' ? 'الفريق' : 'Team' }}</span>
+    <h1>{{ locale === 'ar' ? 'الوظائف' : 'Careers' }}</h1>
+    <p class="meta">{{ locale === 'ar' ? 'ابنِ معنا المدفوعات اليومية لفلسطين' : 'Build everyday payments for Palestine with us' }}</p>
+  </div>
+
+  <article class="legal-body" *ngIf="locale === 'en'">
+    <p>We're a product and engineering team shipping payments, vouchers, WhatsApp Pay, and local services across the West Bank.</p>
+    <h2>How we work</h2>
+    <ul>
+      <li>Customer-obsessed and bilingual by default (Arabic &amp; English).</li>
+      <li>Ship carefully — payments demand correctness over cleverness.</li>
+      <li>Respect for local context, partners, and regulators.</li>
+    </ul>
+    <h2>Open roles</h2>
+    <p>We don't always list every opening publicly. If you're a strong engineer, designer, or go-to-market builder who cares about fintech in Palestine, we'd like to hear from you.</p>
+    <p>Send your CV and a short note to <a href="mailto:careers@lycheeapp.org">careers&#64;lycheeapp.org</a>, or use our <a routerLink="/" fragment="contact">contact form</a>.</p>
+  </article>
+
+  <article class="legal-body" *ngIf="locale === 'ar'">
+    <p>نحن فريق منتج وهندسة يبني المدفوعات والقسائم وواتساب باي والخدمات المحلية عبر الضفة الغربية.</p>
+    <h2>كيف نعمل</h2>
+    <ul>
+      <li>نركّز على العميل وثنائية اللغة افتراضيًا (العربية والإنجليزية).</li>
+      <li>نُطلق بحذر — المدفوعات تتطلّب الدقة قبل الذكاء.</li>
+      <li>احترام للسياق المحلي والشركاء والجهات التنظيمية.</li>
+    </ul>
+    <h2>الفرص المفتوحة</h2>
+    <p>لا ننشر دائمًا كل الشواغر علنًا. إن كنت مهندسًا أو مصممًا أو باني نمو قويًا وتهتم بالتقنية المالية في فلسطين، نود سماعك.</p>
+    <p>أرسل سيرتك الذاتية وملاحظة قصيرة إلى <a href="mailto:careers@lycheeapp.org">careers&#64;lycheeapp.org</a>، أو استخدم <a routerLink="/" fragment="contact">نموذج التواصل</a>.</p>
+  </article>
+</app-legal-page-shell>

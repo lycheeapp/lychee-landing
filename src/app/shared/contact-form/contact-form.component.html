@@ -1,0 +1,86 @@
+<form class="contact-form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  <div class="form-success" *ngIf="success" role="status">
+    {{ t(labels.successMessage) }}
+  </div>
+
+  <div class="honeypot" aria-hidden="true">
+    <label for="cf-website">Website</label>
+    <input id="cf-website" type="text" formControlName="website" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <div class="field-row">
+    <div class="field">
+      <label for="cf-name">{{ t(labels.nameLabel) }}</label>
+      <input
+        id="cf-name"
+        type="text"
+        formControlName="name"
+        autocomplete="name"
+        [attr.aria-invalid]="fieldInvalid('name')"
+        [attr.aria-describedby]="fieldInvalid('name') ? 'cf-name-err' : null" />
+      <span class="field-error" id="cf-name-err" *ngIf="fieldInvalid('name')">{{ t(labels.requiredError) }}</span>
+    </div>
+    <div class="field">
+      <label for="cf-email">{{ t(labels.emailLabel) }}</label>
+      <input
+        id="cf-email"
+        type="email"
+        formControlName="email"
+        autocomplete="email"
+        dir="ltr"
+        [attr.aria-invalid]="fieldInvalid('email')"
+        [attr.aria-describedby]="fieldInvalid('email') ? 'cf-email-err' : null" />
+      <span class="field-error" id="cf-email-err" *ngIf="fieldInvalid('email')">
+        {{ form.get('email')?.hasError('email') ? t(labels.emailError) : t(labels.requiredError) }}
+      </span>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="cf-topic">{{ t(labels.topicLabel) }}</label>
+    <input
+      id="cf-topic"
+      type="text"
+      formControlName="topic"
+      [attr.aria-invalid]="fieldInvalid('topic')"
+      [attr.aria-describedby]="fieldInvalid('topic') ? 'cf-topic-err' : null" />
+    <span class="field-error" id="cf-topic-err" *ngIf="fieldInvalid('topic')">{{ t(labels.requiredError) }}</span>
+  </div>
+
+  <div class="field">
+    <label for="cf-msg">{{ t(labels.messageLabel) }}</label>
+    <textarea
+      id="cf-msg"
+      formControlName="message"
+      [attr.aria-invalid]="fieldInvalid('message')"
+      [attr.aria-describedby]="fieldInvalid('message') ? 'cf-msg-err' : null"></textarea>
+    <span class="field-error" id="cf-msg-err" *ngIf="fieldInvalid('message')">{{ t(labels.requiredError) }}</span>
+  </div>
+
+  <label class="consent" [class.invalid]="fieldInvalid('consent')">
+    <input type="checkbox" formControlName="consent" />
+    <span>
+      {{ t(labels.consentLabel) }}
+      <a routerLink="/privacy">{{ t(labels.consentLinkLabel) }}</a>.
+    </span>
+  </label>
+  <span class="field-error" *ngIf="fieldInvalid('consent')">{{ t(labels.requiredError) }}</span>
+
+  <button class="btn btn-primary btn-block" type="submit" [disabled]="submitting">
+    <span>{{ submitting ? t(labels.sendingLabel) : t(labels.sendLabel) }}</span>
+    <svg *ngIf="!submitting" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+      <path d="M20 4 3.5 11.2a.5.5 0 0 0 .05.94l6.4 1.9 1.9 6.4a.5.5 0 0 0 .94.05L20 4Z"/>
+      <path d="M20 4l-9.95 9.05"/>
+    </svg>
+  </button>
+
+  <div class="form-error" *ngIf="errorKey" role="alert">{{ errorText() }}</div>
+
+  <div class="form-note">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" aria-hidden="true">
+      <rect x="5.5" y="10.5" width="13" height="9" rx="2"/>
+      <path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/>
+    </svg>
+    <span>{{ t(labels.privacyNote) }}</span>
+  </div>
+</form>
