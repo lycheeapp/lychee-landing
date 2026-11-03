@@ -6,4 +6,5 @@
 /cookies
 /privacy
 /terms
+/hello/delete-account
 /404

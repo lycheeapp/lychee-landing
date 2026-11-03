@@ -14,6 +14,7 @@ Standalone Angular 18 app with SSR prerender. Routes:
 | `/cookies` | Cookie policy |
 | `/privacy` | Privacy policy (AR/EN) |
 | `/terms` | Terms & conditions (AR/EN) |
+| `/hello/delete-account` | Delete a Lychee Hello account (AR/EN) — the Google Play account-deletion link |
 | `/404` | Not found |
 
 Locale: `lychee_lang` in `localStorage`, or `?lang=ar` / `?lang=en`.

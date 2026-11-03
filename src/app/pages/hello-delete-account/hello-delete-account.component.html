@@ -1,0 +1,95 @@
+<app-legal-page-shell
+  [locale]="locale"
+  activePath="/hello/delete-account"
+  (langToggle)="toggleLocale()">
+
+  <div class="legal-inner" *ngIf="locale === 'en'">
+    <div class="legal-hero">
+      <span class="eyebrow">Lychee Hello · by Lychee Tech</span>
+      <h1>Delete your Lychee Hello account</h1>
+      <p class="meta">You can delete your account at any time, in the app or by asking us.</p>
+    </div>
+
+    <article class="legal-body">
+      <p>Lychee Hello is Lychee Tech's app for paying by chat and at Lychee POS terminals. This page explains how to delete your Lychee Hello account and what happens to your data.</p>
+
+      <h2>Delete it in the app</h2>
+      <ol>
+        <li>Open Lychee Hello and go to <strong>Settings</strong>.</li>
+        <li>Tap <strong>Account &amp; profile</strong>.</li>
+        <li>Tap <strong>Delete account</strong>, then confirm.</li>
+      </ol>
+      <p>The deletion happens straight away and signs you out on all your devices.</p>
+
+      <h2>Delete it without the app</h2>
+      <p>If you no longer have the app, <a [href]="mailto">email info&#64;lycheeapp.org</a> with the subject “Delete my Lychee Hello account” and the mobile number your account uses, or message us on WhatsApp at <a href="https://wa.me/970598999890" target="_blank" rel="noopener">+970 598 999 890</a>.</p>
+      <p>To protect you, we confirm the request with that number before deleting anything, and we tell you when it's done.</p>
+
+      <h2>What is deleted</h2>
+      <ul>
+        <li>Your name and mobile number in Lychee Hello</li>
+        <li>Your chats in Lychee Hello</li>
+        <li>Your sign-ins and notification tokens on all your devices</li>
+      </ul>
+
+      <h2>What we keep, and why</h2>
+      <ul>
+        <li><strong>Records of payments you made.</strong> Financial regulations require us to keep transaction records. We keep them only for as long as the law requires, then delete them.</li>
+        <li><strong>Vouchers sent to your number.</strong> They stay usable by their code, so their value isn't lost.</li>
+        <li><strong>A Lychee wallet, if you have one.</strong> Deleting Lychee Hello doesn't delete your Lychee account or wallet. Delete those in the Lychee app, or ask us at the same address.</li>
+      </ul>
+
+      <p>For more about the data Lychee Hello uses, see our <a routerLink="/privacy" fragment="lychee-hello">Privacy Policy</a>.</p>
+    </article>
+
+    <div class="legal-footer">
+      <span>© 2026 Lychee Tech</span>
+      <a routerLink="/privacy">View Privacy Policy →</a>
+    </div>
+  </div>
+
+  <div class="legal-inner" *ngIf="locale === 'ar'">
+    <div class="legal-hero">
+      <span class="eyebrow">Lychee Hello · من ليتشي تِك</span>
+      <h1>حذف حسابك في Lychee Hello</h1>
+      <p class="meta">يمكنك حذف حسابك في أي وقت، من التطبيق أو بطلب منّا.</p>
+    </div>
+
+    <article class="legal-body">
+      <p>Lychee Hello هو تطبيق ليتشي تِك للدفع عبر المحادثة وعلى أجهزة نقاط البيع من Lychee. توضّح هذه الصفحة كيف تحذف حسابك في Lychee Hello وما يحدث لبياناتك.</p>
+
+      <h2>الحذف من التطبيق</h2>
+      <ol>
+        <li>افتح Lychee Hello وانتقل إلى <strong>الإعدادات</strong>.</li>
+        <li>اضغط <strong>الحساب والملف الشخصي</strong>.</li>
+        <li>اضغط <strong>حذف الحساب</strong>، ثم أكّد.</li>
+      </ol>
+      <p>يتم الحذف فورًا، ويُسجَّل خروجك من جميع أجهزتك.</p>
+
+      <h2>الحذف بدون التطبيق</h2>
+      <p>إذا لم يعد التطبيق لديك، <a [href]="mailto">راسلنا على info&#64;lycheeapp.org</a> بعنوان «حذف حسابي في Lychee Hello» واذكر رقم الهاتف المسجّل في حسابك، أو راسلنا عبر واتساب على <a href="https://wa.me/970598999890" target="_blank" rel="noopener"><span dir="ltr">+970 598 999 890</span></a>.</p>
+      <p>لحمايتك، نؤكّد الطلب مع هذا الرقم قبل حذف أي شيء، ونُعلمك عند اكتمال الحذف.</p>
+
+      <h2>ما الذي يُحذف</h2>
+      <ul>
+        <li>اسمك ورقم هاتفك في Lychee Hello</li>
+        <li>محادثاتك في Lychee Hello</li>
+        <li>جلسات الدخول ورموز الإشعارات على جميع أجهزتك</li>
+      </ul>
+
+      <h2>ما نحتفظ به، ولماذا</h2>
+      <ul>
+        <li><strong>سجلّات المدفوعات التي أجريتها.</strong> تُلزمنا الأنظمة المالية بالاحتفاظ بسجلّات المعاملات، ونحتفظ بها فقط للمدة التي يقتضيها القانون ثم نحذفها.</li>
+        <li><strong>القسائم المرسلة إلى رقمك.</strong> تبقى صالحة للاستخدام برمزها، حتى لا تضيع قيمتها.</li>
+        <li><strong>محفظة Lychee إن كانت لديك.</strong> حذف Lychee Hello لا يحذف حسابك أو محفظتك في Lychee. يمكنك حذفهما من تطبيق Lychee، أو بطلب منّا على العنوان نفسه.</li>
+      </ul>
+
+      <p>لمعرفة المزيد عن البيانات التي يستخدمها Lychee Hello، راجع <a routerLink="/privacy" fragment="lychee-hello">سياسة الخصوصية</a>.</p>
+    </article>
+
+    <div class="legal-footer">
+      <span>© 2026 ليتشي تِك</span>
+      <a routerLink="/privacy">عرض سياسة الخصوصية ←</a>
+    </div>
+  </div>
+</app-legal-page-shell>

@@ -39,6 +39,14 @@ export const routes: Routes = [
       import('./pages/cookies/cookies.component').then((m) => m.CookiesComponent)
   },
   {
+    // Google Play's account-deletion link for the Lychee Hello app (Data safety form).
+    path: 'hello/delete-account',
+    loadComponent: () =>
+      import('./pages/hello-delete-account/hello-delete-account.component').then(
+        (m) => m.HelloDeleteAccountComponent
+      )
+  },
+  {
     path: '404',
     loadComponent: () =>
       import('./pages/not-found/not-found.component').then((m) => m.NotFoundComponent)

@@ -269,7 +269,8 @@ html[lang="ar"] .legal-body h2 {
   font-size: 15.5px;
 }
 
-.legal-body ul {
+.legal-body ul,
+.legal-body ol {
   margin: 0 0 16px;
   padding-inline-start: 22px;
   color: var(--sec);

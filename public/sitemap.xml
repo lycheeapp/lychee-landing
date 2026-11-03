@@ -51,6 +51,13 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://lycheeapp.org/hello/delete-account</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://lycheeapp.org/hello/delete-account?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lycheeapp.org/hello/delete-account?lang=en"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://lycheeapp.org/cookies</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://lycheeapp.org/cookies?lang=ar"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lycheeapp.org/cookies?lang=en"/>
