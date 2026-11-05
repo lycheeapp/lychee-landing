@@ -2,9 +2,20 @@
   position: sticky;
   top: 0;
   z-index: 60;
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: saturate(180%) blur(16px);
   border-bottom: 1px solid var(--line-soft, #eef0f2);
+}
+
+/* The frosted background lives on a pseudo-element: a backdrop-filter on the
+   header itself would become the containing block of the fixed mobile drawer
+   and squash it to the header's 68px height. */
+.site-nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(255, 255, 255, 0.86);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  backdrop-filter: saturate(180%) blur(16px);
 }
 
 .site-nav .wrap {
@@ -48,6 +59,7 @@
 }
 
 .nav-links a {
+  white-space: nowrap;
   padding: 9px 14px;
   border-radius: 100px;
   font-size: 15px;
@@ -170,14 +182,17 @@
   position: fixed;
   top: 0;
   inset-inline-end: 0;
-  width: min(360px, 92vw);
+  width: min(360px, 88vw);
   height: 100%;
+  height: 100dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   background: #fff;
   z-index: 80;
-  padding: 88px 24px 32px;
+  padding: 20px 20px calc(24px + env(safe-area-inset-bottom));
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 20px;
   box-shadow: -12px 0 40px rgba(6, 38, 18, 0.12);
   /* Only mounted when open (*ngIf); still hide on desktop as a safeguard */
   animation: drawer-in 0.25s ease;
@@ -206,11 +221,44 @@
 }
 
 /* Never show mobile drawer chrome on desktop / tablet */
-@media (min-width: 641px) {
+@media (min-width: 961px) {
   .mobile-backdrop,
   .mobile-drawer {
     display: none !important;
   }
+}
+
+.drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line-soft, #eef0f2);
+}
+
+.drawer-head img {
+  height: 24px;
+  width: auto;
+  display: block;
+}
+
+.drawer-close {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--line, #e8e8ea);
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--ink, #0e121b);
+  padding: 0;
+}
+
+.drawer-close svg {
+  width: 20px;
+  height: 20px;
 }
 
 .mobile-links {
@@ -232,6 +280,17 @@
 .mobile-links a:hover,
 .mobile-links a:focus-visible {
   background: var(--off2, #f6f5f2);
+}
+
+.mobile-links a.is-active {
+  background: rgba(30, 205, 100, 0.12);
+  color: var(--green-ink, #12a851);
+}
+
+.mobile-actions .lang-btn {
+  justify-content: center;
+  padding: 13px 16px;
+  font-size: 15px;
 }
 
 .mobile-actions {
@@ -258,28 +317,75 @@
   margin-inline: auto;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1100px) and (min-width: 961px) {
+  .nav-in {
+    gap: 16px;
+  }
+
+  .nav-links {
+    gap: 2px;
+  }
+
+  .nav-links a {
+    padding: 9px 11px;
+    font-size: 14.5px;
+  }
+}
+
+@media (max-width: 960px) {
+  .nav-in {
+    gap: 10px;
+    height: 62px;
+  }
+
   .nav-links {
     display: none;
-  }
-
-  .nav-cta .nav-cta-text {
-    display: none;
-  }
-
-  .brand img.logo-full {
-    display: none;
-  }
-
-  .brand img.logo-mark {
-    display: block;
   }
 
   .menu-toggle {
     display: inline-flex;
   }
 
+  .nav-right {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 640px) {
   .nav-right .lang-btn {
     display: none;
+  }
+
+  .nav-cta {
+    padding: 9px 14px;
+    font-size: 13.5px;
+    box-shadow: 0 6px 14px rgba(30, 205, 100, 0.24);
+  }
+
+  .nav-cta svg {
+    display: none;
+  }
+
+  /* Inner pages have no CTA, so keep the language switch one tap away. */
+  .site-nav.legal-variant .nav-right .lang-btn {
+    display: inline-flex;
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .brand img.logo-full {
+    height: 22px;
+  }
+}
+
+/* Very narrow phones: the mark alone leaves room for the CTA and menu. */
+@media (max-width: 359px) {
+  .brand img.logo-full {
+    display: none;
+  }
+
+  .brand img.logo-mark {
+    display: block;
+    height: 28px;
   }
 }

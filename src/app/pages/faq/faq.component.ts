@@ -16,8 +16,7 @@ interface FaqEntry {
   selector: 'app-faq',
   standalone: true,
   imports: [CommonModule, RouterModule, LegalPageShellComponent],
-  templateUrl: './faq.component.html',
-  styleUrl: '../../legal/legal-page.scss'
+  templateUrl: './faq.component.html'
 })
 export class FaqComponent implements OnInit, OnDestroy {
   locale: LandingLocale = 'ar';

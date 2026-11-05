@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { LegalPageShellComponent } from '../shared/legal-page-shell/legal-page-shell.component';
@@ -10,9 +10,7 @@ import { L } from '../core/models/landing-page.model';
   selector: 'app-privacy-policy',
   standalone: true,
   imports: [CommonModule, RouterModule, LegalPageShellComponent],
-  templateUrl: './privacy-policy.component.html',
-  styleUrl: './legal-page.scss',
-  encapsulation: ViewEncapsulation.None
+  templateUrl: './privacy-policy.component.html'
 })
 export class PrivacyPolicyComponent implements OnInit, OnDestroy {
   locale: LandingLocale = 'ar';

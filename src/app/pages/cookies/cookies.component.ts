@@ -10,8 +10,7 @@ import { L } from '../../core/models/landing-page.model';
   selector: 'app-cookies',
   standalone: true,
   imports: [CommonModule, RouterModule, LegalPageShellComponent],
-  templateUrl: './cookies.component.html',
-  styleUrl: '../../legal/legal-page.scss'
+  templateUrl: './cookies.component.html'
 })
 export class CookiesComponent implements OnInit, OnDestroy {
   locale: LandingLocale = 'ar';

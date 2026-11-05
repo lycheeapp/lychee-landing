@@ -17,7 +17,7 @@ Standalone Angular 18 app with SSR prerender. Routes:
 | `/hello/delete-account` | Delete a Lychee Hello account (AR/EN) — the Google Play account-deletion link |
 | `/404` | Not found |
 
-Locale: `lychee_lang` in `localStorage`, or `?lang=ar` / `?lang=en`.
+Locale: `?lang=ar` / `?lang=en`, else `lychee_lang` in `localStorage`, else Arabic.
 
 ## Environment
 
@@ -68,11 +68,31 @@ Requires the API to be running with SendGrid configured (`default.sender.email.a
 
 ## Deploy (S3 + CloudFront SPA)
 
-1. Upload the **contents** of `dist/lychee-landing/browser/` to the marketing S3 bucket.
-2. Configure the bucket (or CloudFront) as a static website / SPA:
-   - **Index document:** `index.html`
-   - **Error document:** `index.html` (required so deep links like `/privacy` resolve; prerendered HTML is preferred when present)
-3. Point `lycheeapp.org` and `www.lycheeapp.org` at this distribution — **not** at CRM.
+Always deploy with the script, from one fresh build:
+
+```bash
+LANDING_BUCKET=<bucket> CLOUDFRONT_DISTRIBUTION_ID=<id> npm run deploy
+```
+
+It builds, checks that every bundle the HTML references exists, uploads hashed
+bundles and assets first and the HTML last, sets cache headers, and invalidates
+CloudFront.
+
+**Never upload individual pages by hand.** Each page's HTML names the hashed
+bundles of its own build (`main-XXXX.js`, `chunk-XXXX.js`). New HTML without its
+bundles gets `index.html` back for the script ("Expected a JavaScript-or-Wasm
+module script but the server responded with a MIME type of text/html") and the
+page never starts — no language switch, no menu.
+
+The script also stores every prerendered route under its extensionless key
+(`privacy`, `hello/delete-account`, …) as `text/html`. Without that, the S3
+website endpoint redirects `/privacy?lang=en` to `/privacy/` and drops `?lang`.
+
+Bucket / CloudFront setup:
+
+- **Index document:** `index.html`
+- **Error document:** `index.html` (unknown paths render the in-app 404)
+- Point `lycheeapp.org` and `www.lycheeapp.org` at this distribution — **not** at CRM.
 
 ### Recommended CloudFront / edge headers
 
