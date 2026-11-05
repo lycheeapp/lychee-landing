@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { ChangeDetectorRef, Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 const CONSENT_KEY = 'lychee_cookie_consent';
@@ -66,18 +66,51 @@ const CONSENT_KEY = 'lychee_cookie_consent';
       gap: 10px;
       justify-content: flex-end;
     }
+    @media (max-width: 640px) {
+      .cookie-banner {
+        left: 12px;
+        right: 12px;
+        bottom: calc(12px + env(safe-area-inset-bottom));
+        padding: 16px;
+        border-radius: 18px;
+        gap: 12px;
+      }
+      .cookie-banner p {
+        font-size: 13.5px;
+      }
+      .cookie-actions {
+        flex-wrap: nowrap;
+      }
+      .cookie-actions .btn {
+        flex: 1 1 0;
+        min-width: 0;
+        padding-inline: 12px;
+      }
+    }
   `]
 })
 export class CookieBannerComponent implements OnInit {
   @Input() locale: 'ar' | 'en' = 'ar';
   visible = false;
 
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: object,
+    private cdr: ChangeDetectorRef
+  ) {}
+
   ngOnInit(): void {
-    try {
-      this.visible = !localStorage.getItem(CONSENT_KEY);
-    } catch {
-      this.visible = true;
+    // Never in the prerendered HTML: it would flash for visitors who already chose.
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
     }
+    setTimeout(() => {
+      try {
+        this.visible = !localStorage.getItem(CONSENT_KEY);
+      } catch {
+        this.visible = true;
+      }
+      this.cdr.markForCheck();
+    }, 0);
   }
 
   accept(): void {

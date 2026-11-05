@@ -10,8 +10,7 @@ import { L } from '../../core/models/landing-page.model';
   selector: 'app-security',
   standalone: true,
   imports: [CommonModule, RouterModule, LegalPageShellComponent],
-  templateUrl: './security.component.html',
-  styleUrl: '../../legal/legal-page.scss'
+  templateUrl: './security.component.html'
 })
 export class SecurityComponent implements OnInit, OnDestroy {
   locale: LandingLocale = 'ar';

@@ -1,6 +1,7 @@
 <app-legal-page-shell
   [locale]="locale"
   activePath="/terms"
+  [toc]="true"
   (langToggle)="toggleLocale()">
 
 <div class="legal-inner" *ngIf="locale === 'en'">

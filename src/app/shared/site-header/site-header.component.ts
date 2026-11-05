@@ -114,7 +114,7 @@ export class SiteHeaderComponent implements OnDestroy {
     if (!this.isBrowser || !this.menuOpen) {
       return;
     }
-    if (window.matchMedia('(min-width: 641px)').matches) {
+    if (window.matchMedia('(min-width: 961px)').matches) {
       this.closeMenu();
     }
   }

@@ -48,13 +48,13 @@ export const LANDING_CONTENT_DEFAULTS: LandingContent = {
       { url: ASSET + '/bop-logo.png', alt: L('بنك فلسطين', 'Bank of Palestine') },
       { url: ASSET + '/cybersource-logo.png', alt: L('CyberSource', 'CyberSource — secured') }
     ],
-    phoneScreenshotAr: ASSET + '/app-home-ar.png',
-    phoneScreenshotEn: ASSET + '/app-home-en.png',
+    phoneScreenshotAr: ASSET + '/app-home-ar.webp',
+    phoneScreenshotEn: ASSET + '/app-home-en.webp',
     phoneScreenshotAlt: L(
       'شاشة تطبيق ليتشي الرئيسية — الرصيد والقسائم والخدمات',
       'Lychee app home screen — balance, vouchers and services'
     ),
-    taxiImageUrl: ASSET + '/hero-taxi.png',
+    taxiImageUrl: ASSET + '/hero-taxi-car.webp',
     taxiImageAlt: L('سيارة أجرة ليتشي الصفراء', 'Lychee yellow taxi'),
     taxiPinUrl: ASSET + '/hero-taxi-pin.png',
     taxiPinAlt: L('دبوس موقع سيارة أجرة', 'Taxi location pin'),
@@ -143,7 +143,7 @@ export const LANDING_CONTENT_DEFAULTS: LandingContent = {
         'PayTag is a physical payment tag for school and allowance. Top it up, set a spending limit, and follow every purchase in real time from your phone.'
       ),
       chip: L('بطاقة فعلية', 'Physical tag'),
-      imageUrl: ASSET + '/paytag-tag.png'
+      imageUrl: ASSET + '/paytag-tag.webp'
     },
     tiles: [
       { icon: 'taxi', title: L('تاكسي', 'Taxi'), description: L('اطلب مشوارك من التطبيق', 'Request rides in-app') },
@@ -188,7 +188,7 @@ export const LANDING_CONTENT_DEFAULTS: LandingContent = {
         'اقبل المدفوعات حيث يوجد عملاؤك أصلاً — داخل المحادثة مباشرةً.',
         'Accept payments right where your customers already are — inside the chat.'
       ),
-      imageUrl: ASSET + '/whatsapp-pay.png',
+      imageUrl: ASSET + '/whatsapp-pay.webp',
       imageAlt: L(
         'محادثة واتساب مع Lychee Pay — تأكيد دفعة داخل المحادثة',
         'WhatsApp chat with Lychee Pay — confirming a payment inside the conversation'
@@ -345,7 +345,7 @@ export const LANDING_CONTENT_DEFAULTS: LandingContent = {
         links: [
           { label: L('للأفراد', 'Personal'), href: '/#consumer' },
           { label: L('للأعمال', 'Business'), href: '/#merchant' },
-          { label: L('للمطوّرون', 'Developers'), href: '/#developers' },
+          { label: L('للمطوّرين', 'Developers'), href: '/#developers' },
           { label: L('الأسئلة الشائعة', 'FAQ'), href: '/faq' }
         ]
       },

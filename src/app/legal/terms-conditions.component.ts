@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { LegalPageShellComponent } from '../shared/legal-page-shell/legal-page-shell.component';
@@ -10,9 +10,7 @@ import { L } from '../core/models/landing-page.model';
   selector: 'app-terms-conditions',
   standalone: true,
   imports: [CommonModule, RouterModule, LegalPageShellComponent],
-  templateUrl: './terms-conditions.component.html',
-  styleUrl: './legal-page.scss',
-  encapsulation: ViewEncapsulation.None
+  templateUrl: './terms-conditions.component.html'
 })
 export class TermsConditionsComponent implements OnInit, OnDestroy {
   locale: LandingLocale = 'ar';

@@ -98,8 +98,8 @@
                 class="hero-taxi"
                 [src]="content.hero.taxiImageUrl"
                 [alt]="t(content.hero.taxiImageAlt)"
-                width="435"
-                height="225"
+                width="810"
+                height="715"
                 fetchpriority="high" />
             </div>
             <div class="phone hero-phone">
@@ -210,7 +210,7 @@
               <span>{{ t(content.consumer.paytag.chip) }}</span>
             </span>
             <div class="paytag-vis" *ngIf="content.consumer.paytag.imageUrl">
-              <img [src]="content.consumer.paytag.imageUrl" alt="PayTag" width="280" height="240" loading="lazy" />
+              <img [src]="content.consumer.paytag.imageUrl" alt="PayTag" width="280" height="280" loading="lazy" />
             </div>
           </div>
         </article>
@@ -275,7 +275,7 @@
             <div class="chat" *ngIf="content.merchant.whatsappPay.imageUrl">
               <div class="wa-shot-frame">
                 <div class="island sm"></div>
-                <img class="wa-shot" [src]="content.merchant.whatsappPay.imageUrl" [alt]="t(content.merchant.whatsappPay.imageAlt)" width="148" height="255" loading="lazy" />
+                <img class="wa-shot" [src]="content.merchant.whatsappPay.imageUrl" [alt]="t(content.merchant.whatsappPay.imageAlt)" width="230" height="299" loading="lazy" />
               </div>
             </div>
           </div>

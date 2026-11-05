@@ -29,7 +29,7 @@ interface TrustLogo {
   standalone: true,
   imports: [CommonModule, RouterModule, LegalPageShellComponent],
   templateUrl: './about.component.html',
-  styleUrls: ['../../legal/legal-page.scss', './about.component.scss']
+  styleUrl: './about.component.scss'
 })
 export class AboutComponent implements OnInit, OnDestroy {
   locale: LandingLocale = 'ar';

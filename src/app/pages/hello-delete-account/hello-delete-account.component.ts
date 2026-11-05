@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { LegalPageShellComponent } from '../../shared/legal-page-shell/legal-page-shell.component';
@@ -17,10 +17,7 @@ import { L } from '../../core/models/landing-page.model';
   selector: 'app-hello-delete-account',
   standalone: true,
   imports: [CommonModule, RouterModule, LegalPageShellComponent],
-  templateUrl: './hello-delete-account.component.html',
-  styleUrl: '../../legal/legal-page.scss',
-  // Same as the privacy policy: the shared legal styles (links, lists) must reach this template.
-  encapsulation: ViewEncapsulation.None
+  templateUrl: './hello-delete-account.component.html'
 })
 export class HelloDeleteAccountComponent implements OnInit, OnDestroy {
   locale: LandingLocale = 'ar';

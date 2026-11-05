@@ -23,15 +23,14 @@ import { L } from '../../core/models/landing-page.model';
             ? 'الرابط قد يكون قديمًا أو مكتوبًا بشكل خاطئ.'
             : 'The link may be outdated or mistyped.' }}
         </p>
-        <div style="margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <div class="legal-actions">
           <a class="btn btn-primary" routerLink="/">{{ locale === 'ar' ? 'العودة للرئيسية' : 'Back home' }}</a>
           <a class="btn btn-outline" routerLink="/faq">{{ locale === 'ar' ? 'الأسئلة الشائعة' : 'FAQ' }}</a>
           <a class="btn btn-outline" routerLink="/" fragment="contact">{{ locale === 'ar' ? 'تواصل معنا' : 'Contact' }}</a>
         </div>
       </div>
     </app-legal-page-shell>
-  `,
-  styleUrl: '../../legal/legal-page.scss'
+  `
 })
 export class NotFoundComponent implements OnInit {
   locale: LandingLocale = 'ar';

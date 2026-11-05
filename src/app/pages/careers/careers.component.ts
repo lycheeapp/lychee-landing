@@ -10,8 +10,7 @@ import { L } from '../../core/models/landing-page.model';
   selector: 'app-careers',
   standalone: true,
   imports: [CommonModule, RouterModule, LegalPageShellComponent],
-  templateUrl: './careers.component.html',
-  styleUrl: '../../legal/legal-page.scss'
+  templateUrl: './careers.component.html'
 })
 export class CareersComponent implements OnInit, OnDestroy {
   locale: LandingLocale = 'ar';
