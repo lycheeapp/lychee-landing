@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 # Deploy the prerendered site to S3 (+ optional CloudFront invalidation).
 #
-#   LANDING_BUCKET=my-bucket [CLOUDFRONT_DISTRIBUTION_ID=E123...] [SKIP_BUILD=1] scripts/deploy.sh
+#   make deploy        (or: npm run deploy)
+#
+# Defaults to the production bucket and distribution; override with
+# LANDING_BUCKET=... CLOUDFRONT_DISTRIBUTION_ID=... and skip the build with SKIP_BUILD=1.
 #
 # Why this script exists (and why not to upload single files by hand):
 #  * Every page's HTML names the hashed bundles of the build it came from
@@ -16,7 +19,8 @@
 #    hello/delete-account, ...) as text/html, which S3 serves directly.
 set -euo pipefail
 
-: "${LANDING_BUCKET:?Set LANDING_BUCKET to the S3 bucket of the site}"
+LANDING_BUCKET="${LANDING_BUCKET:-lycheeapp.org}"
+CLOUDFRONT_DISTRIBUTION_ID="${CLOUDFRONT_DISTRIBUTION_ID:-E17N6OWXRQMUNJ}"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 OUT="$ROOT/dist/lychee-landing/browser"
 S3="s3://$LANDING_BUCKET"

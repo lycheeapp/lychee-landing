@@ -71,8 +71,12 @@ Requires the API to be running with SendGrid configured (`default.sender.email.a
 Always deploy with the script, from one fresh build:
 
 ```bash
-LANDING_BUCKET=<bucket> CLOUDFRONT_DISTRIBUTION_ID=<id> npm run deploy
+make deploy   # or: npm run deploy
 ```
+
+Targets bucket `lycheeapp.org` and CloudFront distribution `E17N6OWXRQMUNJ`
+(override with `LANDING_BUCKET=…` / `CLOUDFRONT_DISTRIBUTION_ID=…`). Needs the
+AWS CLI logged in with access to both.
 
 It builds, checks that every bundle the HTML references exists, uploads hashed
 bundles and assets first and the HTML last, sets cache headers, and invalidates
