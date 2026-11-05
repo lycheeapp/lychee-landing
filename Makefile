@@ -2,7 +2,7 @@
 # Run `make` (or `make help`) to list targets.
 
 .DEFAULT_GOAL := help
-.PHONY: help install start serve build build-dev watch test clean
+.PHONY: help install start serve build build-dev watch test clean deploy
 
 help: ## List available commands
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
@@ -27,6 +27,9 @@ watch: ## Rebuild on change (development configuration)
 
 test: ## Run unit tests (Karma)
 	npm test
+
+deploy: ## Build and deploy to S3 (lycheeapp.org) + invalidate CloudFront
+	bash scripts/deploy.sh
 
 clean: ## Remove build output
 	rm -rf dist .angular/cache
